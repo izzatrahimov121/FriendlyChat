@@ -1,0 +1,15 @@
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\bin\Debug\net6.0\Chat.DataAccess.deps.json
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\bin\Debug\net6.0\Chat.DataAccess.dll
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\bin\Debug\net6.0\Chat.DataAccess.pdb
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\bin\Debug\net6.0\Chat.Core.dll
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\bin\Debug\net6.0\Chat.Core.pdb
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\obj\Debug\net6.0\Chat.DataAccess.csproj.AssemblyReference.cache
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\obj\Debug\net6.0\Chat.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\obj\Debug\net6.0\Chat.DataAccess.AssemblyInfoInputs.cache
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\obj\Debug\net6.0\Chat.DataAccess.AssemblyInfo.cs
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\obj\Debug\net6.0\Chat.DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\obj\Debug\net6.0\Chat.DataAccess.csproj.CopyComplete
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\obj\Debug\net6.0\Chat.DataAccess.dll
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\obj\Debug\net6.0\refint\Chat.DataAccess.dll
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\obj\Debug\net6.0\Chat.DataAccess.pdb
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.DataAccess\obj\Debug\net6.0\ref\Chat.DataAccess.dll

@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<selection class="discussionsN">
+    <h1>Follow</h1>
+    <div class="input-group rounded">
+        <input id="search" type="search" class="form-control rounded col-7" placeholder="Search user name" aria-label="Search" aria-describedby="search-addon" style="margin-left:200px; height:50px;" />
+    </div>
+    <div id="search_box" style="margin-left:200px; margin-top:15px; width:590px;">
+    </div>
+</selection>
+
+
+
+
+<script src="~/assets/js/jquery-3.7.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var menu = '@ViewBag.ActiveMenu'
+        $(".navitem").find("li").removeClass("item-active");
+        if (menu == "Follow") {
+            $("#li3").addClass("item-active");
+        }
+
+        $("#search").keyup(function () {
+            var username = $("#search").val();
+            if (username.length >= 3) {
+                $.ajax({
+                    url: "/Follow/SearchByUsername",
+                    type: "GET",
+                    data: { username: username },
+                    dataType: "json",
+                    success: function (data) {
+                        var html = "";
+                        if (data.length != 0) {
+                            $.each(data, function (i, val) {
+                                html += '<div class="card"><div class="card-body"style="display:-webkit-box;display:-ms-flexbox;display:flex;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p><button class="btn btn-success"  onclick="send(\''+val.userName+'\',$(this))" >Send follow request</button></div></div>';
+                            });
+                        }
+                        else {
+
+                            html += '<div class="card"><div class="card-body"style="display:-webkit-box;display:-ms-flexbox;display:flex;"><p>Heç bir netice yoxdur</p>';
+                        }
+                        $('#search_box').empty();
+                        $('#search_box').append(html);
+                    }
+                });
+            }
+        });
+    });
+    function send(name,el) {
+        el.prop('disabled', true);
+        $.ajax({
+            url: "/Follow/SendFollowRequest",
+            type: "POST",
+            data: {username: name},
+            success: function(){
+            }
+        });
+
+    }
+</script>
+

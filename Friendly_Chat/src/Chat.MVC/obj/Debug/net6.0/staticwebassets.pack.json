@@ -1,0 +1,45 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chat.MVC.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Chat.MVC.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\css\\NotificatioStyle.css",
+      "PackagePath": "staticwebassets\\assets\\css\\NotificatioStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\default.png",
+      "PackagePath": "staticwebassets\\assets\\images\\default.png"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\nonotification.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\nonotification.jpg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\js\\jquery-3.7.0.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-3.7.0.min.js"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\sass\\style.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\style.scss"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.Chat.MVC.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.Chat.MVC.props",
+      "PackagePath": "build\\Chat.MVC.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Chat.MVC.props",
+      "PackagePath": "buildMultiTargeting\\Chat.MVC.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.Chat.MVC.props",
+      "PackagePath": "buildTransitive\\Chat.MVC.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

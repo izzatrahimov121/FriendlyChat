@@ -1,0 +1,136 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<link rel="stylesheet" type="text/css" href="../assets/css/NotificatioStyle.css">
+<style>
+    .button-37 {
+        background-color: #13aa52;
+        border: 1px solid #13aa52;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        outline: none;
+        outline: 0;
+        padding: 10px 25px;
+        text-align: center;
+        transform: translateY(0);
+        transition: transform 150ms, box-shadow 150ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
+
+        .button-37:hover {
+            box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+            transform: translateY(-2px);
+        }
+
+    .button-37-1 {
+        background-color: #e62143;
+        border: 1px solid #e62143;
+        border-radius: 4px;
+        box-shadow: rgba(0, 0, 0, .1) 0 2px 4px 0;
+        box-sizing: border-box;
+        color: #fff;
+        cursor: pointer;
+        font-family: "Akzidenz Grotesk BQ Medium", -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        outline: none;
+        outline: 0;
+        padding: 10px 25px;
+        text-align: center;
+        transform: translateY(0);
+        transition: transform 150ms, box-shadow 150ms;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+    }
+
+        .button-37-1:hover {
+            box-shadow: rgba(0, 0, 0, .15) 0 3px 9px 0;
+            transform: translateY(-2px);
+        }
+</style>
+<section class="section-50 discussionsN">
+    <h3 class="m-b-50 heading-line" style="margin-left:350px">Notifications <i class="fa fa-bell text-muted"></i></h3>
+
+    <div id="notification_box" class="notification-ui_dd-content">
+
+        <!-- -------------------------------- -->
+        <!-- -----Notifikation area---------- -->
+        <!-- -------------------------------- -->
+
+    </div>
+</section>
+
+
+<script src="~/assets/js/jquery-3.7.0.min.js"></script>
+<script>
+    //document.getElementById("btn1").addEventListener("click", GetData, false);
+    $(document).ready(function () {
+        var menu = '@ViewBag.ActiveMenu';
+        $(".navitem").find("li").removeClass("item-active");
+        if (menu == "Notification") {
+            $("#li4").addClass("item-active");
+        };
+
+
+        console.log("ok");
+        $.ajax({
+            url: "/Notification/GetNotifications",
+            type: "Get",
+            dataType: "json",
+            success: function (data) {
+                var html = '';
+                if(data.length!=0){
+                    $.each(data, function (i, val) {
+                        html += '<div class="notification-list notification-list--unread" style="height:90px;width:900px;margin-left:15px;"><div class="notification-list_content"><div class="notification-list_img"><img src="../assets/images/' + val.image + '" alt="user"></div><div class="notification-list_detail"><p style="margin-top:15px; font-size:20px"><b>' + val.fromUser + '</b>sent you a friend request</p></div></div><div class="notification-list_feature-img buttons"><button class="button-37" role="button">Accept</button><button class="button-37-1" role="button">Do not accept</button></div></div>';
+                    });
+                }
+                else{
+                    html += '<img src="../assets/images/nonotification.jpg" alt="user" style="width:300px;margin-left:300px;">';
+                }
+                $('#notification_box').empty();
+                $('#notification_box').append(html);
+            }
+        });
+    });
+
+    $("#btn1").click(function () {
+        
+    });
+</script>
+@*//$.ajax({
+        //    url: "/Notification/GetNotifications",
+        //    type: "GET",
+        //    dataType: "json",
+        //    success: function (data) {
+                //var html = '';
+                //$.each(data, function (i, val) {
+                //    html += `        <div class="notification-list notification-list--unread" style="height:90px;width:900px;margin-left:15px;">
+                //                                <div class="notification-list_content">
+                //                                    <div class="notification-list_img">
+                //                                        <img src="../assets/images/`+ val.image + `" alt="user">
+                //                                    </div>
+                //                                    <div class="notification-list_detail">
+                //                                        <p style="margin-top:15px; font-size:20px"><b>`+ val.userName + `</b> sent you a friend request </p>
+                //                                    </div>
+                //                                </div>
+                //                                <div class="notification-list_feature-img buttons">
+                //                                    <button class="button-37" role="button">Accept</button>
+                //                                    <button class="button-37-1" role="button">Do not accept</button>
+                //                                </div>
+                //                        </div>`;
+                //});
+                //$('.notification_box').empty();
+                //$('.notification_box').append(html);*@

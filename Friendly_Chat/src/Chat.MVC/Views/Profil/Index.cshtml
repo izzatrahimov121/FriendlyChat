@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<selection class="discussionsN">
+    <h1>Profil</h1>
+    <h1>
+        @ViewBag.LoginUser
+    </h1>
+</selection>
+
+
+<script src="~/assets/js/jquery-3.7.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        var menu = '@ViewBag.ActiveMenu'
+        $(".navitem").find("li").removeClass("item-active");
+        if (menu == "Profil") {
+            $("#li2").addClass("item-active");
+        }
+    });
+</script>

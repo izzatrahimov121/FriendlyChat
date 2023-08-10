@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Chat.DataAccess.Migrations
 {
     [DbContext(typeof(AppDbContexts))]
-    [Migration("20230808160843_Requests")]
-    partial class Requests
+    [Migration("20230809175219_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,8 +32,14 @@ namespace Chat.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("FromID")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("ToID")
                         .HasColumnType("nvarchar(max)");
@@ -51,12 +57,18 @@ namespace Chat.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FollowedID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Friendships");
                 });
@@ -276,15 +288,6 @@ namespace Chat.DataAccess.Migrations
                     b.HasDiscriminator().HasValue("AppUser");
                 });
 
-            modelBuilder.Entity("Chat.Core.Entities.Friendship", b =>
-                {
-                    b.HasOne("Chat.Core.Entities.AppUser", "User")
-                        .WithMany("Friendships")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("User");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -334,11 +337,6 @@ namespace Chat.DataAccess.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("Chat.Core.Entities.AppUser", b =>
-                {
-                    b.Navigation("Friendships");
                 });
 #pragma warning restore 612, 618
         }

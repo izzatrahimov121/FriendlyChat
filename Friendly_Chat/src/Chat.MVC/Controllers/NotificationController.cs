@@ -1,6 +1,7 @@
 ﻿using Chat.Core.Entities;
 using Chat.DataAccess.Repository.Interfaces;
 using Chat.MVC.Models.Notification;
+using Humanizer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -28,6 +29,8 @@ public class NotificationController : Controller
         return View();
     }
 
+
+
     [HttpGet]
     public async Task<IActionResult> GetNotifications()
     {
@@ -37,7 +40,10 @@ public class NotificationController : Controller
             return Json(null);
         }
         var user = await _userManager.FindByNameAsync(username);
-        var notifications = await _requestRepository.FindAll().Where(n=>n.ToID == user.Id).ToListAsync();
+        var notifications = await _requestRepository.FindAll()
+                                                    .Where(n => n.ToID == user.Id)
+                                                    .OrderByDescending(n => n.Date) //.OrderBy(n => n.Date)
+                                                    .ToListAsync();
         List<GetNotificationViewModel> list = new List<GetNotificationViewModel>();
         foreach (var notification in notifications)
         {
@@ -46,12 +52,13 @@ public class NotificationController : Controller
             {
                 FromUser = FromUser.UserName,
                 Image = FromUser.Image,
+                Date = notification.Date.ToString()
             };
             list.Add(n);
+            notification.Status = 1; //bildirishi oxunmush olaraq qeyd edirik
+            _requestRepository.Update(notification);
+            await _requestRepository.SaveAsync();
         }
         return Json(list);
     }
-
-
-
 }

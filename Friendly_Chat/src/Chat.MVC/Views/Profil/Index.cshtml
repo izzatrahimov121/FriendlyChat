@@ -4,20 +4,113 @@
 }
 
 <selection class="discussionsN">
-    <h1>Profil</h1>
-    <h1>
-        @ViewBag.LoginUser
-    </h1>
+
+    <div class="row py-5 px-4">
+        <div class="col-md-8 mx-auto">
+            <!-- Profile widget -->
+            <div class="bg-white shadow rounded overflow-hidden">
+                <div class="px-4 pt-0 pb-4 cover">
+                    <div class="media align-items-end profile-head">
+                        <div class="profile mr-3">
+                            <img src="./assets/images/@ViewBag.Image"
+                                 onclick="Modal(@ViewBag.Image)" width="130" class="rounded mb-2 img-thumbnail">
+                            <a id="editProfil" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
+                        </div>
+                        <div class="media-body mb-5 text-white">
+                            <h4 class="mt-0 mb-0">@ViewBag.UserName</h4>
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-light p-4 d-flex justify-content-end text-center">
+                    <ul class="list-inline mb-0">
+                        <li id="Followers" class="list-inline-item">
+                            <h5 class="font-weight-bold mb-0 d-block">745</h5>
+                            <small class="text-muted">
+                                <i class="fas fa-user mr-1"></i>Followers
+                            </small>
+                        </li>
+                        <li class="list-inline-item">
+                            <br />
+                        </li>
+                        <li class="list-inline-item">
+                            <br />
+                        </li>
+                        <li class="list-inline-item">
+                            <br />
+                        </li>
+                        <li id="Following" class="list-inline-item">
+                        <h5 id="Following" class="font-weight-bold mb-0 d-block">340</h5>
+                            <small class="text-muted">
+                                <i class="fas fa-user mr-1"></i>Following
+                            </small>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <form id="editform" style="background-color:azure; margin-top:40px; display:none">
+                <div style="margin-left:20px;margin-right:20px;">
+                    <div class="form-group">
+                        <label style="margin-top:5px;display: flex; flex-direction: row-reverse;"><i id="closeform" class="fa-solid fa-square-xmark fa-beat fa-2xl"></i></label>
+                        <label for="usernameinput">User Name</label>
+                        <input type="text" class="form-control" id="usernameinput" value="@ViewBag.UserName" placeholder="Enter new user name" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailinput">Email address</label>
+                        <input type="email" class="form-control" id="emailinput" value="@ViewBag.Email" aria-describedby="emailHelp" disabled placeholder="Enter new email">
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordinput">Password</label>
+                        <input type="password" class="form-control" id="passwordinput" disabled placeholder="New password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirminput">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirminput" disabled placeholder="Confirm password">
+                    </div>
+                    <a style="margin-bottom:10px;" id="changeinfo" class="btn btn-danger">Change information</a>
+                    <button style="margin-bottom:10px;" type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+
+            <div id="followList" style="background-color:aquamarine;margin-top:40px; display:none">
+                <ul class="list-group list-group-light">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
+                                 class="rounded-circle" />
+                            <div class="ms-3">
+                                <p class="fw-bold mb-1">John Doe</p>
+                                <p class="text-muted mb-0">john.doe@gmail.com</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
+                                 style="width: 45px; height: 45px" />
+                            <div class="ms-3">
+                                <p class="fw-bold mb-1">Alex Ray</p>
+                                <p class="text-muted mb-0">alex.ray@gmail.com</p>
+                            </div>
+                        </div>
+
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
+                                 style="width: 45px; height: 45px" />
+                            <div class="ms-3">
+                                <p class="fw-bold mb-1">Kate Hunington</p>
+                                <p class="text-muted mb-0">kate.hunington@gmail.com</p>
+                            </div>
+                        </div>
+
+
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </selection>
 
-
-<script src="~/assets/js/jquery-3.7.0.min.js"></script>
-<script>
-    $(document).ready(function () {
-        var menu = '@ViewBag.ActiveMenu'
-        $(".navitem").find("li").removeClass("item-active");
-        if (menu == "Profil") {
-            $("#li2").addClass("item-active");
-        }
-    });
-</script>

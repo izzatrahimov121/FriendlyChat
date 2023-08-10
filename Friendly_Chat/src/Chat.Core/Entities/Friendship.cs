@@ -5,7 +5,7 @@ namespace Chat.Core.Entities;
 public class Friendship : IEntity
 {
 	public int Id { get; set; }
-	public string? UserId { get; set; }
-
-	public AppUser? User { get; set; }
+	public string UserID { get; set; }
+	public string FollowedID { get; set; }
+	public DateTime Date { get; set; } = DateTime.Now;
 }

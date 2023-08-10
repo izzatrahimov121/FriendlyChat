@@ -9,8 +9,8 @@ namespace Chat.MVC.Controllers;
 
 public class HomeController : Controller
 {
-	private readonly UserManager<AppUser> _userManager;
-	private readonly IFriendshipRepository _friendshipRepository;
+    private readonly UserManager<AppUser> _userManager;
+    private readonly IFriendshipRepository _friendshipRepository;
     private readonly IRequestRepository _requestRepository;
 
     public HomeController(UserManager<AppUser> userManager, IFriendshipRepository friendshipRepository, IRequestRepository requestRepository)
@@ -21,7 +21,7 @@ public class HomeController : Controller
     }
 
     public async Task<IActionResult> Index()
-	{
+    {
         ViewBag.ActiveMenu = "Home";
         var username = HttpContext.User.Identity?.Name;
         if (username is null)
@@ -29,12 +29,11 @@ public class HomeController : Controller
             return View();
         }
         var user = await _userManager.FindByNameAsync(username);
-        var IsRequest = await _requestRepository.FindAll().Where(r => r.ToID == user.Id).ToListAsync();
-        ViewBag.IsNotification = "no";
-        if (IsRequest is not null)
+        var IsNewRequest = await _requestRepository.FindAll().Where(r => r.ToID == user.Id && r.Status == 0).ToListAsync();
+        if (IsNewRequest.Count!=0)
         {
-            ViewBag.IsNotification = "yes";
+            ViewBag.IsNewNotification = "yes";
         }
         return View();
-	}
+    }
 }

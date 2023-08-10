@@ -26,7 +26,7 @@
                 <div class="bg-light p-4 d-flex justify-content-end text-center">
                     <ul class="list-inline mb-0">
                         <li id="Followers" class="list-inline-item">
-                            <h5 class="font-weight-bold mb-0 d-block">745</h5>
+                            <h5 class="font-weight-bold mb-0 d-block">@ViewBag.Followers</h5>
                             <small class="text-muted">
                                 <i class="fas fa-user mr-1"></i>Followers
                             </small>
@@ -41,7 +41,7 @@
                             <br />
                         </li>
                         <li id="Following" class="list-inline-item">
-                        <h5 id="Following" class="font-weight-bold mb-0 d-block">340</h5>
+                            <h5 class="font-weight-bold mb-0 d-block">@ViewBag.Following</h5>
                             <small class="text-muted">
                                 <i class="fas fa-user mr-1"></i>Following
                             </small>
@@ -73,41 +73,9 @@
                 </div>
             </form>
 
-            <div id="followList" style="background-color:aquamarine;margin-top:40px; display:none">
-                <ul class="list-group list-group-light">
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                            <img src="https://mdbootstrap.com/img/new/avatars/8.jpg" alt="" style="width: 45px; height: 45px"
-                                 class="rounded-circle" />
-                            <div class="ms-3">
-                                <p class="fw-bold mb-1">John Doe</p>
-                                <p class="text-muted mb-0">john.doe@gmail.com</p>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                            <img src="https://mdbootstrap.com/img/new/avatars/6.jpg" class="rounded-circle" alt=""
-                                 style="width: 45px; height: 45px" />
-                            <div class="ms-3">
-                                <p class="fw-bold mb-1">Alex Ray</p>
-                                <p class="text-muted mb-0">alex.ray@gmail.com</p>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        <div class="d-flex align-items-center">
-                            <img src="https://mdbootstrap.com/img/new/avatars/7.jpg" class="rounded-circle" alt=""
-                                 style="width: 45px; height: 45px" />
-                            <div class="ms-3">
-                                <p class="fw-bold mb-1">Kate Hunington</p>
-                                <p class="text-muted mb-0">kate.hunington@gmail.com</p>
-                            </div>
-                        </div>
-
-
-                    </li>
+            <div id="followList" style="margin-top:40px; display:none">
+                <label style="margin-top:5px;display: flex; flex-direction: row-reverse;"><i id="closefollowlist" style="z-index:33;" class="fa-solid fa-square-xmark fa-beat fa-2xl"></i></label>
+                <ul id="follogingList" class="list-group list-group-light">
                 </ul>
             </div>
         </div>

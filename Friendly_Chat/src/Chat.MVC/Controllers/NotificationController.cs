@@ -32,7 +32,7 @@ public class NotificationController : Controller
 
 
     [HttpGet]
-    public async Task<IActionResult> GetNotifications()
+    public async Task<JsonResult> GetNotifications()
     {
         var username = HttpContext.User.Identity?.Name;
         if (username is null)

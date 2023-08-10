@@ -594,7 +594,6 @@
         <div id="caption"></div>
     </div>
 
-
     <script src="~/assets/js/jquery-3.7.0.min.js" type="text/javascript"></script>
 
     <!--The Layout Script-->
@@ -604,7 +603,7 @@
             console.log(notification);
             if (notification == "yes") {
                 $("#li4").find("i").removeClass("fa-envelope");
-                $("#li4").find("i").addClass("fa-bell");
+                $("#li4").find("i").addClass("fa-bell fa-beat-fade");
             }
 
             var menu = '@ViewBag.ActiveMenu';
@@ -705,13 +704,21 @@
                         dataType: "json",
                         success: function (data) {
                             var html = "";
-                            if (data.length != 0) {
+                            if (data != null) {
                                 $.each(data, function (i, val) {
-                                    html += '<div class="card"><div class="card-body"style="display:-webkit-box;display:-ms-flexbox;display:flex;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p><button class="btn btn-success"  onclick="send(\'' + val.userName + '\',$(this))" >Send follow request</button></div></div>';
+                                    if (val.requestStatus == "sendRequest"){
+                                        html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button><button style="display:none;" class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button></div></div></div>';
+                                    }
+                                    else if(val.requestStatus == "requested"){
+                                        html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button><button style="display:none;" class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button></div></div></div>';
+                                    }
+                                    else {//followed
+                                        html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-primary" disabled>Followed</button></div></div></div>';
+                                    }
                                 });
                             }
                             else {
-
+                                console.log("1sq");
                                 html += '<div class="card"><div class="card-body"style="display:-webkit-box;display:-ms-flexbox;display:flex;"><p>Heç bir netice yoxdur</p>';
                             }
                             $('#search_box').empty();
@@ -721,26 +728,85 @@
                 }
             });
         });
-        function send(name, el) {
+        function SendRequest(name, el) {
             el.prop('disabled', true);
             $.ajax({
                 url: "/Follow/SendFollowRequest",
                 type: "POST",
-                data: { username: name }
+                data: { username: name },
+                success: function(){
+                    el.css("display","none");
+                    el.closest('.card-body').find('.btn-secondary').show();
+                    el.closest('.card-body').find('.btn-secondary').prop('disabled',false);
+                }
             });
-        }
+        };
+        function WithdrawRequest(name,el){
+            el.prop('disabled',true);
+            $.ajax({
+                url: "/Follow/WithdrawFollowRequest",
+                type:"POST",
+                data:{username: name },
+                success: function(){
+                    el.css("display","none");
+                    el.closest('.card-body').find('.btn-success').show();
+                    el.closest('.card-body').find('.btn-success').prop('disabled',false);
+                }
+            });
+        };
+
+
     </script>
     <!--End Follow Script-->
     <!--The Profile Script-->
     <script>
+
         $("#editProfil, #closeform").click(function () {
             $("#editform").toggle();
         });
         $("#changeinfo").click(function(){
             $("#editform input").prop("disabled", false);
         });
-        $("#Followers, #Following").click(function(){
-            $("#followList").toggle();
+        $("#closefollowlist").click(function () {
+            $("#followList").css("display", "none");
+        });
+
+
+        $("#Followers").click(function(){
+            $("#followList").css("display","block");
+            $.ajax({
+                url: "/Profil/GetFollowers",
+                type:"GET",
+                dataType:"json",
+                success: function(data){
+                    var html = "";
+                    if(data != null){
+                        $.each(data, function (i, val) {
+                            html += '<li class="list-group-item d-flex justify-content-between align-items-center"><div class="d-flex align-items-center"><img src="../assets/images/' + val.followingUserImage + '" style = "width: 45px; height: 45px" class="rounded-circle" /><div class="ms-3" ><p class="fw-bold mb-1" > ' + val.followingUserName + ' </p><p class="text-muted mb-0" >' + val.followingUserEmail+ '</p></div></div></li>'
+                        });
+                    }
+                    $("#follogingList").empty();
+                    $("#follogingList").append(html);
+                }
+            });
+        });
+        $("#Following").click(function () {
+            $("#followList").css("display", "block");
+            $.ajax({
+                url: "/Profil/GetFollowing",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    var html = "";
+                    if (data != null) {
+                        $.each(data, function (i, val) {
+                            html += '<li class="list-group-item d-flex justify-content-between align-items-center"><div class="d-flex align-items-center"><img src="../assets/images/' + val.followingUserImage + '" style = "width: 45px; height: 45px" class="rounded-circle" /><div class="ms-3" ><p class="fw-bold mb-1" > ' + val.followingUserName + ' </p><p class="text-muted mb-0" >' + val.followingUserEmail + '</p></div></div></li>'
+                        });
+                    }
+                    $("#follogingList").empty();
+                    $("#follogingList").append(html);
+                }
+            });
         });
     </script>
     <!--End Profile Script-->

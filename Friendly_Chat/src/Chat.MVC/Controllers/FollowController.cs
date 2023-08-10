@@ -41,17 +41,34 @@ public class FollowController : Controller
 
 
     [HttpGet]
-    public async Task<IActionResult> SearchByUsername(string username)
+    public async Task<JsonResult> SearchByUsername(string username)
     {
+        var loginUser = HttpContext.User.Identity?.Name;
+        if (loginUser is null)
+        {
+            return Json(null);
+        }
+        var fromUser = await _userManager.FindByNameAsync(loginUser);
         var users = await _userManager.Users.Where(u => u.UserName.Contains(username)).ToListAsync();
         List<GetUsersViewModel> resultList = new List<GetUsersViewModel>();
         foreach (var user in users)
         {
-            GetUsersViewModel result = new()
+            GetUsersViewModel result = new GetUsersViewModel();
+            result.Image = user.Image;
+            result.UserName = user.UserName;
+            var IsRequset = await _requestRepository.FindAll()
+                              .FirstOrDefaultAsync(r => r.FromID == fromUser.Id && r.ToID == user.Id);
+            if (IsRequset is not null)
             {
-                Image=user.Image,
-                UserName=user.UserName,
-            };
+                result.requestStatus = "requested";
+            }
+            else
+            {
+                var IsFriend = await _friendshipRepository.FindAll()
+                                    .FirstOrDefaultAsync(f => f.UserID == fromUser.Id && f.FollowedID == user.Id);
+                if (IsFriend is not null) result.requestStatus = "followed";
+                else result.requestStatus = "sendRequest";
+            }
             resultList.Add(result);
         }
         return Json(resultList);
@@ -59,22 +76,38 @@ public class FollowController : Controller
 
 
     [HttpPost]
-    public async Task  SendFollowRequest(string username)
+    public async Task SendFollowRequest(string username)
     {
         var user = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
         var ToRequestUser = await _userManager.FindByNameAsync(username);
-        if (ToRequestUser != null)
+        var IsRequest = await _requestRepository.FindAll()
+                              .FirstOrDefaultAsync(r => r.FromID == user.Id && r.ToID == ToRequestUser.Id);
+        if (ToRequestUser is not null && IsRequest is null)
         {
             FollowingRequest followingRequest = new()
             {
-                FromID = user.Id,
-                ToID = ToRequestUser.Id,
+                FromID = user.Id,//kimden
+                ToID = ToRequestUser.Id,//kime
             };
             await _requestRepository.CreateAsync(followingRequest);
             await _requestRepository.SaveAsync();
         }
     }
 
+
+    [HttpPost]
+    public async Task WithdrawFollowRequest(string username)
+    {
+        var user = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
+        var withdrawUser = await _userManager.FindByNameAsync(username);
+        var Request = await _requestRepository.FindAll()
+                              .FirstOrDefaultAsync(r => r.FromID == user.Id && r.ToID == withdrawUser.Id);
+        if (Request is not null)
+        {
+            _requestRepository.Delete(Request);
+            await _requestRepository.SaveAsync();
+        }
+    }
 
     [HttpPost]
     public async Task ToAcceptRequest(string username)
@@ -107,7 +140,7 @@ public class FollowController : Controller
         var loginUser = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
         var user = await _userManager.FindByNameAsync(username);
         var request = await _requestRepository.FindAll()
-                            .FirstOrDefaultAsync(r=>r.FromID==user.Id && r.ToID == loginUser.Id);
+                            .FirstOrDefaultAsync(r => r.FromID == user.Id && r.ToID == loginUser.Id);
         if (request != null)
         {
             _requestRepository.Delete(request);

@@ -623,6 +623,15 @@
         });
     </script>
     <!--End Layout Script-->
+    <!--The Home Script-->
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+               
+            })
+        });
+    </script>
+    <!--End Home Script-->
     <!--The Notification Script-->
     <script>
         $(document).ready(function () {
@@ -713,7 +722,7 @@
                                         html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button><button style="display:none;" class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button></div></div></div>';
                                     }
                                     else {//followed
-                                        html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-primary" disabled>Followed</button></div></div></div>';
+                                        html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-danger" onclick="DeleteFollowUp(\'' + val.userName + '\',$(this))">Do not follow</button><button class="btn btn-success" style="display:none;" onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button><button class="btn btn-secondary" style="display:none;" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button></div></div></div>';
                                     }
                                 });
                             }
@@ -754,6 +763,19 @@
                 }
             });
         };
+        function DeleteFollowUp(name,el){
+            el.prop('disabled',true);
+            $.ajax({
+                url: "/Follow/DeleteFollowUp",
+                type:"POST",
+                data:{username: name},
+                success: function(){
+                    el.css("display", "none");
+                    el.closest('.card-body').find('.btn-success').show();
+                    el.closest('.card-body').find('.btn-success').prop('disabled', false);
+                }
+            });
+        };
 
 
     </script>
@@ -763,6 +785,7 @@
 
         $("#editProfil, #closeform").click(function () {
             $("#editform").toggle();
+            $("#followList").css("display", "none");
         });
         $("#changeinfo").click(function(){
             $("#editform input").prop("disabled", false);
@@ -773,6 +796,7 @@
 
 
         $("#Followers").click(function(){
+            $("#editform").css("display", "none");
             $("#followList").css("display","block");
             $.ajax({
                 url: "/Profil/GetFollowers",
@@ -791,6 +815,7 @@
             });
         });
         $("#Following").click(function () {
+            $("#editform").css("display", "none");
             $("#followList").css("display", "block");
             $.ajax({
                 url: "/Profil/GetFollowing",

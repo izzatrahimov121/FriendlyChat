@@ -74,7 +74,6 @@ public class FollowController : Controller
         return Json(resultList);
     }
 
-
     [HttpPost]
     public async Task SendFollowRequest(string username)
     {
@@ -93,7 +92,6 @@ public class FollowController : Controller
             await _requestRepository.SaveAsync();
         }
     }
-
 
     [HttpPost]
     public async Task WithdrawFollowRequest(string username)
@@ -133,7 +131,6 @@ public class FollowController : Controller
         }
     }
 
-
     [HttpPost]
     public async Task ToRejectRequest(string username)
     {
@@ -145,6 +142,20 @@ public class FollowController : Controller
         {
             _requestRepository.Delete(request);
             await _requestRepository.SaveAsync();
+        }
+    }
+
+    [HttpPost]
+    public async Task DeleteFollowUp(string username)
+    {
+        var loginUser = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
+        var user = await _userManager.FindByNameAsync(username);
+        var isFriend = await _friendshipRepository.FindAll()
+                            .FirstOrDefaultAsync(f=>f.UserID == loginUser.Id && f.FollowedID==user.Id);
+        if (isFriend is not null)
+        {
+            _friendshipRepository.Delete(isFriend);
+            await _friendshipRepository.SaveAsync();    
         }
     }
 }

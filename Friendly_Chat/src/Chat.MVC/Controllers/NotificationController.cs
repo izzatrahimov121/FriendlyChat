@@ -25,6 +25,11 @@ public class NotificationController : Controller
 
     public IActionResult Index()
     {
+        var loginUser = HttpContext.User.Identity?.Name;
+        if(loginUser == null )
+        {
+            return RedirectToAction("Login","Auth");
+        }
         ViewBag.ActiveMenu = "Notification";
         return View();
     }

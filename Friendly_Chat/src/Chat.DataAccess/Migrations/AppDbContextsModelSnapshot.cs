@@ -71,6 +71,34 @@ namespace Chat.DataAccess.Migrations
                     b.ToTable("Friendships");
                 });
 
+            modelBuilder.Entity("Chat.Core.Entities.Message", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("FromUserID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IsRead")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ToUserID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Messages");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")

@@ -23,18 +23,12 @@ public class ProfilController : Controller
 
     public async Task<IActionResult> Index()
     {
-        ViewBag.ActiveMenu = "Profil";
         var username = HttpContext.User.Identity?.Name;
         if (username is null)
         {
-            ViewBag.UserName = "User";
-            ViewBag.Email = "excample@gmail.com";
-            ViewBag.Image = "default.png";
-            ViewBag.Followers = "00";
-            ViewBag.Following = "00";
-
-            return View();
+            return RedirectToAction("Login","Auth");
         }
+        ViewBag.ActiveMenu = "Profil";
         var user = await _userManager.FindByNameAsync(username);
         var IsNewRequest = await _requestRepository.FindAll().Where(r => r.ToID == user.Id && r.Status == 0).ToListAsync();
         if (IsNewRequest.Count != 0)

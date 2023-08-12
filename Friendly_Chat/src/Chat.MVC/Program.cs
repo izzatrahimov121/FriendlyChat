@@ -37,6 +37,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 //add services and repository
 builder.Services.AddScoped<IFriendshipRepository, FriendshipRepository>();
 builder.Services.AddScoped<IRequestRepository, RequestRepository>();
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 
 
 

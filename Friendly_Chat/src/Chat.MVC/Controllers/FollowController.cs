@@ -28,7 +28,7 @@ public class FollowController : Controller
         var username = HttpContext.User.Identity?.Name;
         if (username is null)
         {
-            return View();
+            return RedirectToAction("Login","Auth");
         }
         var user = await _userManager.FindByNameAsync(username);
         var IsNewRequest = await _requestRepository.FindAll().Where(r => r.ToID == user.Id && r.Status == 0).ToListAsync();

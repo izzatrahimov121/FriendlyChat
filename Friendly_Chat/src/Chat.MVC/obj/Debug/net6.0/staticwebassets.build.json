@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OL8A6LjzpLMnruXgUgFm6BJObAVFSzZZucW7gkVLfnw=",
+  "Hash": "ayEsEZseWP1B6M3NQHgZCuj3fX6TtroavLC0ZqFwXHI=",
   "Source": "Chat.MVC",
   "BasePath": "_content/Chat.MVC",
   "Mode": "Default",
@@ -49,6 +49,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Chat.MVC.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\audio\\get.mp3",
+      "SourceId": "Chat.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\",
+      "BasePath": "_content/Chat.MVC",
+      "RelativePath": "assets/audio/get.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\audio\\get.mp3"
+    },
+    {
+      "Identity": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\audio\\send.mp3",
+      "SourceId": "Chat.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\",
+      "BasePath": "_content/Chat.MVC",
+      "RelativePath": "assets/audio/send.mp3",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\audio\\send.mp3"
     },
     {
       "Identity": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\css\\NotificatioStyle.css",

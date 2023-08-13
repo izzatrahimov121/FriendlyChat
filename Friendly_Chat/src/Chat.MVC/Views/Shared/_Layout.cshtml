@@ -259,7 +259,7 @@
                 }
 
             .chat .messages-chat .text {
-                margin: 0 35px;
+                margin: 0 10px;
                 background-color: #8bddf6;
                 padding: 15px;
                 border-radius: 12px;
@@ -614,7 +614,7 @@
             var menu = '@ViewBag.ActiveMenu';
             if (menu == "Home") {
                 $.ajax({
-                    url: "/Home/GetLastChat",
+                    url: "/Home/GetUsers",
                     type: "GET",
                     dataType: "json",
                     success: function (data) {
@@ -632,6 +632,8 @@
         });
 
 
+
+        var GetAudio = new Audio("../assets/audio/get.mp3")
         function GoChat(name, el) {
             $(".message-active").removeClass("message-active");
             el.addClass("message-active");
@@ -645,32 +647,50 @@
                 data: { toUserName: name },
                 success: function (data) {
                     var html = '';
-                    if (data.length != 0) {
-                        $.each(data, function (i, val) {
-                            if (val.fromUserName == name) {
-                                html += '<div class="message"><p class="text">' + val.message + '</p></div>';
-                            }
-                            else {
-                                html += '<div class="message"><div class="response"><p class="text">' + val.message + '</p></div></div>';
-                            }
-                        });
-                    }
-                    else {
-                        html += '<div class="message"><div class="response"><p class="text">EMPTY</p></div></div>';
-                    }
+                    $.each(data, function (i, val) {
+                        if (val.fromUserName != name) {
+                            html += '<div class="message"><p class="text" style="max-width:300px; word-wrap: break-word;">' + val.message + '</p></div>';
+                        }
+                        else {
+                            html += '<div class="message"><div class="response"><p class="text" style="max-width:300px; word-wrap: break-word;">' + val.message + '</p></div></div>';
+                        }
+                    });
                     $('.messages-chat').empty();
                     $('.messages-chat').append(html);
+                    $('.messages-chat').scrollTop($('.messages-chat').prop("scrollHeight"))
                 }
             });
             $('.messages-chat').css("display", "block");
             $(".footer-chat").css("display", "block");
             $(".write-message").attr("data-toUser", name);
+
+            //------new message-----
+            setInterval(function () {
+                $.ajax({
+                    url: "Home/GetNewMessage",
+                    type: "GET",
+                    data: { toUserName: name},
+                    dataType: "json",
+                    success: function (data) {
+                        if(data.length!=0){
+                            var html = '';
+                            $.each(data, function (i, val) {
+                                html += '<div class="message"><p class="text" style="max-width:300px; word-wrap: break-word;">' + val.message + '</p></div>';
+                            });
+                            GetAudio.play();
+                            $('.messages-chat').append(html);
+                        }
+                    }
+                });
+            }, 1000);
         };
+
+
+        //-------------send message------
+        var SendAudio = new Audio("../assets/audio/send.mp3");
         $(".write-message").on("keydown", function (event) {
             if (event.keyCode === 13) { // Enter click
-                console.log("enter");
-                //event.preventDefault();
-                var inputValue = $(this).val(); // Input value
+                var inputValue = $(this).val();
                 if ($.trim(inputValue) !== "") {
                     var toUser = $(".write-message").data("touser");
                     console.log(toUser);
@@ -679,15 +699,15 @@
                         type: "POST",
                         data: { toUserName: toUser, content: inputValue },
                         success: function () {
-                            var html = '<div class="message"><div class="response"><p class="text">' + inputValue + '</p></div></div>';
+                            var html = '<div class="message" ><div class="response"><p class="text" style="max-width:300px; word-wrap: break-word;">' + inputValue + '</p></div></div>';
                             $('.messages-chat').append(html);
+                            SendAudio.play();
+                            $(".write-message").val("");
                         }
                     });
                 }
             }
         });
-
-
     </script>
     <!--End Home Script-->
     <!--The Notification Script-->

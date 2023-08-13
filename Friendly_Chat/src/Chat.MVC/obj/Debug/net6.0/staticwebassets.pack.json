@@ -5,6 +5,14 @@
       "PackagePath": "staticwebassets\\Chat.MVC.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\audio\\get.mp3",
+      "PackagePath": "staticwebassets\\assets\\audio\\get.mp3"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\audio\\send.mp3",
+      "PackagePath": "staticwebassets\\assets\\audio\\send.mp3"
+    },
+    {
       "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\css\\NotificatioStyle.css",
       "PackagePath": "staticwebassets\\assets\\css\\NotificatioStyle.css"
     },

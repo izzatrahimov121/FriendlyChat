@@ -27,12 +27,12 @@ public class HomeController : Controller
         var username = HttpContext.User.Identity?.Name;
         if (username is null)
         {
-            return RedirectToAction("Login","Auth");
+            return RedirectToAction("Login", "Auth");
         }
         ViewBag.ActiveMenu = "Home";
         var user = await _userManager.FindByNameAsync(username);
         var IsNewRequest = await _requestRepository.FindAll().Where(r => r.ToID == user.Id && r.Status == 0).ToListAsync();
-        if (IsNewRequest.Count!=0)
+        if (IsNewRequest.Count != 0)
         {
             ViewBag.IsNewNotification = "yes";
         }
@@ -41,11 +41,11 @@ public class HomeController : Controller
 
 
     [HttpGet]
-    public async Task<JsonResult> GetLastChat()
+    public async Task<JsonResult> GetUsers()
     {
         var loginUser = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
         List<GetLastChatViewModel> results = new List<GetLastChatViewModel>();
-        var friends = await _friendshipRepository.FindAll().Where(f=>f.UserID == loginUser.Id).ToListAsync();
+        var friends = await _friendshipRepository.FindAll().Where(f => f.UserID == loginUser.Id).ToListAsync();
         foreach (var friend in friends)
         {
             var FollowedUser = await _userManager.FindByIdAsync(friend.FollowedID);
@@ -60,6 +60,36 @@ public class HomeController : Controller
         return Json(results);
     }
 
+
+
+    //-----------
+    [HttpGet]
+    public async Task<JsonResult> GetOldChat(string toUserName)
+    {
+        var fromUser = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
+        var toUser = await _userManager.FindByNameAsync(toUserName);
+        var messages = await _messageRepository.FindAll()
+                                                .Where(m => (m.FromUserID == toUser.Id && m.ToUserID == fromUser.Id) ||
+                                                           (m.FromUserID == fromUser.Id && m.ToUserID == toUser.Id))
+                                                .OrderBy(m => m.CreatedAt)
+                                                .ToListAsync();
+        List<GetOldChatViewModel> results = new List<GetOldChatViewModel>();
+        foreach (var message in messages)
+        {
+            GetOldChatViewModel model = new GetOldChatViewModel();
+            if (message.FromUserID == fromUser.Id)
+            {
+                model.fromUserName = fromUser.UserName;
+            }
+            if (message.ToUserID == toUser.Id)
+            {
+                model.fromUserName = toUser.UserName;
+            }
+            model.message = message.Content;
+            results.Add(model);
+        }
+        return Json(results);
+    }
 
     [HttpGet]
     public async Task<JsonResult> GetNewMessage(string toUserName)
@@ -85,31 +115,8 @@ public class HomeController : Controller
         return Json(results);
     }
 
-    [HttpGet]
-    public async Task<JsonResult> GetOldChat(string toUserName)
-    {
-        var fromUser = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
-        var toUser = await _userManager.FindByNameAsync(toUserName);
-        var messages = await _messageRepository.FindAll()
-                                                .Where(m=> (m.FromUserID == toUser.Id && m.ToUserID == fromUser.Id) || 
-                                                           (m.FromUserID == fromUser.Id && m.ToUserID == toUser.Id))
-                                                .OrderBy(m=>m.CreatedAt)
-                                                .ToListAsync();
-        List<GetOldChatViewModel> results = new List<GetOldChatViewModel>();
-        foreach (var message in messages)
-        {
-            GetOldChatViewModel model = new()
-            {
-                fromUserName = toUser.UserName,
-                message = message.Content,
-            };
-            results.Add(model);
-        }
-        return Json(results);
-    }
-
     [HttpPost]
-    public async Task SendMessage(string toUserName,string content)
+    public async Task SendMessage(string toUserName, string content)
     {
         var fromUser = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
         var toUser = await _userManager.FindByNameAsync(toUserName);

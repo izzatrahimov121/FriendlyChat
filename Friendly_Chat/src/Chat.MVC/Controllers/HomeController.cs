@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Chat.MVC.Controllers;
 
+
+namespace Chat.MVC.Controllers;
 public class HomeController : Controller
 {
     private readonly UserManager<AppUser> _userManager;
@@ -44,17 +45,22 @@ public class HomeController : Controller
     public async Task<JsonResult> GetUsers()
     {
         var loginUser = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
-        List<GetLastChatViewModel> results = new List<GetLastChatViewModel>();
+        List<GetChatUsersViewModel> results = new List<GetChatUsersViewModel>();
         var friends = await _friendshipRepository.FindAll().Where(f => f.UserID == loginUser.Id).ToListAsync();
         foreach (var friend in friends)
         {
             var FollowedUser = await _userManager.FindByIdAsync(friend.FollowedID);
-            GetLastChatViewModel model = new()
+            var newMessages = await _messageRepository.FindAll()
+                    .Where(m => m.FromUserID == FollowedUser.Id && m.ToUserID == loginUser.Id && m.IsRead == 0)
+                    .ToListAsync();
+            GetChatUsersViewModel model = new()
             {
                 ToUserName = FollowedUser.UserName,
                 ToUserImage = FollowedUser.Image,
-                LastMessage = "Test123 4241"
+                LastMessage = "Test123 4241",
             };
+            if (newMessages is not null) model.NewMessagesCount = newMessages.Count;
+            if (FollowedUser.IsOnline == 1) model.IsOnline = true;
             results.Add(model);
         }
         return Json(results);
@@ -73,20 +79,25 @@ public class HomeController : Controller
                                                            (m.FromUserID == fromUser.Id && m.ToUserID == toUser.Id))
                                                 .OrderBy(m => m.CreatedAt)
                                                 .ToListAsync();
+        DateTime currentDate = DateTime.MinValue;
         List<GetOldChatViewModel> results = new List<GetOldChatViewModel>();
         foreach (var message in messages)
         {
             GetOldChatViewModel model = new GetOldChatViewModel();
-            if (message.FromUserID == fromUser.Id)
-            {
-                model.fromUserName = fromUser.UserName;
-            }
-            if (message.ToUserID == toUser.Id)
-            {
-                model.fromUserName = toUser.UserName;
-            }
+            if (message.FromUserID == fromUser.Id) model.fromUserName = fromUser.UserName;
+            if (message.ToUserID == toUser.Id) model.fromUserName = toUser.UserName;
+            DateTime CreatedAt = (DateTime)message.CreatedAt;
             model.message = message.Content;
+            model.time = CreatedAt.ToString("HH:mm");
+            if (CreatedAt.Date != currentDate.Date)
+            {
+                model.Date = CreatedAt.ToString("dd/MM/yyyy");
+                currentDate = CreatedAt;
+            }
             results.Add(model);
+            message.IsRead = 1;
+            _messageRepository.Update(message);
+            await _messageRepository.SaveAsync();
         }
         return Json(results);
     }
@@ -102,10 +113,11 @@ public class HomeController : Controller
         List<GetMessageViewModel> results = new List<GetMessageViewModel>();
         foreach (var message in messages)
         {
+            DateTime CreatedAt = (DateTime)message.CreatedAt;
             GetMessageViewModel model = new()
             {
                 Message = message.Content,
-                Time = message.CreatedAt.ToString()
+                time = CreatedAt.ToString("HH:mm")
             };
             results.Add(model);
             message.IsRead = 1;

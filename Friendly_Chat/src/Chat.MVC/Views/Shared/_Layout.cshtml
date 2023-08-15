@@ -201,7 +201,7 @@
             font-size: 11px;
             padding: 3px 8px;
             color: #BBB;
-            background-color: #FFF;
+            background-color: #0c5e1e;
             border: 1px solid #E5E5E5;
             border-radius: 15px;
         }
@@ -243,7 +243,7 @@
             .chat .messages-chat .message {
                 display: flex;
                 align-items: center;
-                margin-bottom: 8px;
+                margin-bottom: 5px;
             }
 
                 .chat .messages-chat .message .photo {
@@ -261,7 +261,7 @@
             .chat .messages-chat .text {
                 margin: 0 10px;
                 background-color: #8bddf6;
-                padding: 15px;
+                padding: 10px;
                 border-radius: 12px;
             }
 
@@ -435,7 +435,7 @@
         }
     </style>
 
-    <!--The Model Style-->
+    <!--The Modal Style-->
     <style>
 
         /* The Modal (background) */
@@ -581,7 +581,7 @@
     </div>
 
     <script src="~/assets/js/jquery-3.7.0.min.js" type="text/javascript"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.12/signalr.min.js"></script>
     <!--The Layout Script-->
     <script>
         $(document).ready(function () {
@@ -621,7 +621,12 @@
                         var html = '';
                         if (data != null) {
                             $.each(data, function (i, val) {
-                                html += '<div onclick="GoChat(\'' + val.toUserName + '\',$(this))" class="discussion"><div class="photo" style = "background-image: url(\'../assets/images/' + val.toUserImage + '\');" ><div class="online" ></div></div><div class="desc-contact"><p class="name">' + val.toUserName + '</p><p class="message">' + val.lastMessage + '</p></div><div class="timer"></div></div>';
+                                if (val.isOnline) {
+                                    html += '<div onclick="GoChat(\'' + val.toUserName + '\',$(this))" class="discussion"><div class="photo" style = "background-image: url(\'../assets/images/' + val.toUserImage + '\');" ><div data-username="' + val.toUserName + '" class="online" ></div></div><div class="desc-contact"><p class="name">' + val.toUserName + '</p><p class="message">' + val.lastMessage + '</p></div><div class="timer">' + val.newMessagesCount + '</div></div>';
+                                }
+                                else {
+                                    html += '<div onclick="GoChat(\'' + val.toUserName + '\',$(this))" class="discussion"><div class="photo" style = "background-image: url(\'../assets/images/' + val.toUserImage + '\');" ><div data-username="' + val.toUserName + '" class="" ></div></div><div class="desc-contact"><p class="name">' + val.toUserName + '</p><p class="message">' + val.lastMessage + '</p></div><div class="timer">' + val.newMessagesCount + '</div></div>';
+                                }
                             });
                         };
                         $("#ChatBox").empty();
@@ -630,6 +635,24 @@
                 });
             }
         });
+
+
+        const connection = new signalR.HubConnectionBuilder()
+            .withUrl("/onlineusershub")
+            .build();
+
+        connection.on("UserConnected", function (username) {
+            //console.log(username + " connected.");
+            $("div[data-username='" + username + "']").addClass("online");
+        });
+
+        connection.on("UserDisconnected", function (username) {
+            //console.log(username + " disconnected.");
+            $("div[data-username='" + username + "']").removeClass("online");
+        });
+        connection.start();
+
+
 
 
 
@@ -649,15 +672,22 @@
                     var html = '';
                     $.each(data, function (i, val) {
                         if (val.fromUserName != name) {
-                            html += '<div class="message"><p class="text" style="max-width:300px; word-wrap: break-word;">' + val.message + '</p></div>';
+                            if (val.date != null) {
+                                html += '<div class="message" style="justify-content: center;"><p class="text" style = "background-color: #a71694;">' + val.date + '</p></div>'
+                            }
+                            html += '<div class="message"><p style="font-size:10px;">' + val.time + '</p><p class="text" style="max-width:300px; word-wrap: break-word;">' + val.message + '</p></div>';
                         }
                         else {
-                            html += '<div class="message"><div class="response"><p class="text" style="max-width:300px; word-wrap: break-word;">' + val.message + '</p></div></div>';
+                            if (val.date != null) {
+                                html += '<div class="message" style="justify-content: center;"><p class="text" style = "background-color: #a71694;">' + val.date + '</p></div>'
+                            }
+                            html += '<div class="message"><div class="response"><p class="text" style="max-width:300px; word-wrap: break-word;">' + val.message + '</p></div><p style="font-size:10px;">' + val.time + '</p></div>';
                         }
                     });
                     $('.messages-chat').empty();
                     $('.messages-chat').append(html);
-                    $('.messages-chat').scrollTop($('.messages-chat').prop("scrollHeight"))
+                    $('.messages-chat').scrollTop($('.messages-chat').prop("scrollHeight"));
+                    $('.timer').empty();
                 }
             });
             $('.messages-chat').css("display", "block");
@@ -669,16 +699,17 @@
                 $.ajax({
                     url: "Home/GetNewMessage",
                     type: "GET",
-                    data: { toUserName: name},
+                    data: { toUserName: name },
                     dataType: "json",
                     success: function (data) {
-                        if(data.length!=0){
+                        if (data.length != 0) {
                             var html = '';
                             $.each(data, function (i, val) {
-                                html += '<div class="message"><p class="text" style="max-width:300px; word-wrap: break-word;">' + val.message + '</p></div>';
+                                html += '<div class="message"><p style="font-size:10px;">' + val.time + '</p><p class="text" style="max-width:300px; word-wrap: break-word;">' + val.message + '</p></div>';
                             });
                             GetAudio.play();
                             $('.messages-chat').append(html);
+                            $('.messages-chat').scrollTop($('.messages-chat').prop("scrollHeight"))
                         }
                     }
                 });
@@ -699,8 +730,10 @@
                         type: "POST",
                         data: { toUserName: toUser, content: inputValue },
                         success: function () {
-                            var html = '<div class="message" ><div class="response"><p class="text" style="max-width:300px; word-wrap: break-word;">' + inputValue + '</p></div></div>';
+                            var now = new Date();
+                            var html = '<div class="message" ><div class="response"><p class="text" style="max-width:300px; word-wrap: break-word;">' + inputValue + '</p></div><p style="font-size:10px;">' + now.getHours() + ':' + now.getMinutes() + '</p></div>';
                             $('.messages-chat').append(html);
+                            $('.messages-chat').scrollTop($('.messages-chat').prop("scrollHeight"))
                             SendAudio.play();
                             $(".write-message").val("");
                         }

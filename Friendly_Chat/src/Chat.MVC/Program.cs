@@ -2,6 +2,8 @@ using Chat.Core.Entities;
 using Chat.DataAccess.Contexts;
 using Chat.DataAccess.Repository.Implementations;
 using Chat.DataAccess.Repository.Interfaces;
+using Chat.MVC.HelperServices;
+using Chat.MVC.Hubs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -39,6 +41,9 @@ builder.Services.AddScoped<IFriendshipRepository, FriendshipRepository>();
 builder.Services.AddScoped<IRequestRepository, RequestRepository>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 
+builder.Services.AddSignalR();
+builder.Services.AddSingleton<OnlineUsersService>();
+
 
 
 var app = builder.Build();
@@ -61,5 +66,10 @@ app.UseAuthorization();
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+	endpoints.MapHub<OnlineUsersHub>("/onlineusershub");
+});
 
 app.Run();

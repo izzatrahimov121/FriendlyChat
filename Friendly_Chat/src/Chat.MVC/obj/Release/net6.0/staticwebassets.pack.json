@@ -1,0 +1,77 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\obj\\Release\\net6.0\\scopedcss\\projectbundle\\Chat.MVC.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Chat.MVC.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\audio\\get.mp3",
+      "PackagePath": "staticwebassets\\assets\\audio\\get.mp3"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\audio\\send.mp3",
+      "PackagePath": "staticwebassets\\assets\\audio\\send.mp3"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\css\\NotificatioStyle.css",
+      "PackagePath": "staticwebassets\\assets\\css\\NotificatioStyle.css"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\099fdea4-85ca-4d35-b50a-cae764134d7eWhatsApp Image 2023-07-26 at 12.42.14.jpeg",
+      "PackagePath": "staticwebassets\\assets\\images\\099fdea4-85ca-4d35-b50a-cae764134d7eWhatsApp Image 2023-07-26 at 12.42.14.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\1a35d366-1640-4812-a5da-c38cbfb3a903WhatsApp Image 2023-08-16 at 14.22.47.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\1a35d366-1640-4812-a5da-c38cbfb3a903WhatsApp Image 2023-08-16 at 14.22.47.jpg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\68059ccd-67e1-4c83-9061-3d3d1887a932WhatsApp Image 2023-08-16 at 14.22.47.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\68059ccd-67e1-4c83-9061-3d3d1887a932WhatsApp Image 2023-08-16 at 14.22.47.jpg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\77a90a40-8c7f-4022-a50f-df7fb8a814a5WhatsApp Image 2023-08-16 at 14.22.47.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\77a90a40-8c7f-4022-a50f-df7fb8a814a5WhatsApp Image 2023-08-16 at 14.22.47.jpg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\99054669-4f7b-4f29-9eb9-955516772e3fWhatsApp Image 2023-08-16 at 14.22.47.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\99054669-4f7b-4f29-9eb9-955516772e3fWhatsApp Image 2023-08-16 at 14.22.47.jpg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\b0362fdf-2600-45a2-a2e5-bc3de4817287555png.png",
+      "PackagePath": "staticwebassets\\assets\\images\\b0362fdf-2600-45a2-a2e5-bc3de4817287555png.png"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\default.png",
+      "PackagePath": "staticwebassets\\assets\\images\\default.png"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\nonotification.jpg",
+      "PackagePath": "staticwebassets\\assets\\images\\nonotification.jpg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\js\\jquery-3.7.0.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\jquery-3.7.0.min.js"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\sass\\style.scss",
+      "PackagePath": "staticwebassets\\assets\\sass\\style.scss"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.Chat.MVC.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.build.Chat.MVC.props",
+      "PackagePath": "build\\Chat.MVC.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.Chat.MVC.props",
+      "PackagePath": "buildMultiTargeting\\Chat.MVC.props"
+    },
+    {
+      "Id": "obj\\Release\\net6.0\\staticwebassets\\msbuild.buildTransitive.Chat.MVC.props",
+      "PackagePath": "buildTransitive\\Chat.MVC.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -3,6 +3,8 @@ using Chat.DataAccess.Contexts;
 using Chat.DataAccess.Repository.Implementations;
 using Chat.DataAccess.Repository.Interfaces;
 using Chat.MVC.HelperServices;
+using Chat.MVC.HelperServices.Implementations;
+using Chat.MVC.HelperServices.Interfaces;
 using Chat.MVC.Hubs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -43,6 +45,7 @@ builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<OnlineUsersService>();
+builder.Services.AddScoped<IFileService,FileService>();
 
 
 

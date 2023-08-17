@@ -46,6 +46,8 @@ public class HomeController : Controller
     {
         var loginUser = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
         List<GetChatUsersViewModel> results = new List<GetChatUsersViewModel>();
+
+
         var friends = await _friendshipRepository.FindAll().Where(f => f.UserID == loginUser.Id).ToListAsync();
         foreach (var friend in friends)
         {
@@ -63,7 +65,29 @@ public class HomeController : Controller
             if (FollowedUser.IsOnline == 1) model.IsOnline = true;
             results.Add(model);
         }
-        return Json(results);
+
+
+
+        var followers = await _friendshipRepository.FindAll().Where(f => f.FollowedID == loginUser.Id).ToListAsync();
+
+        var followersNotInFriends = followers.Where(f => !friends.Any(fr => fr.UserID == f.UserID)).ToList();
+        foreach (var follower in followersNotInFriends)
+        {
+            var FollowerUser = await _userManager.FindByIdAsync(follower.UserID);
+            var newMessages = await _messageRepository.FindAll()
+                    .Where(m => m.FromUserID == FollowerUser.Id && m.ToUserID == loginUser.Id && m.IsRead == 0)
+                    .ToListAsync();
+            GetChatUsersViewModel model = new()
+            {
+                ToUserName = FollowerUser.UserName,
+                ToUserImage = FollowerUser.Image,
+                LastMessage = "Test123 4241",
+            };
+            if (newMessages is not null) model.NewMessagesCount = newMessages.Count;
+            if (FollowerUser.IsOnline == 1) model.IsOnline = true;
+            results.Add(model);
+        }
+        return Json(results.DistinctBy(r => r.ToUserName).ToList());//eynileri silme
     }
 
 

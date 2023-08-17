@@ -1,5 +1,7 @@
 ﻿using Chat.Core.Entities;
+using Chat.MVC.HelperServices.Interfaces;
 using Chat.MVC.Models.Auth;
+using Chat.MVC.Models.Profil;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -18,48 +20,6 @@ public class AuthController : Controller
         _signInManager = signInManager;
         _roleManager = roleManager;
     }
-
-
-
-
-    #region Login
-    public IActionResult Login()
-    {
-        return View();
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Login(LoginViewModel loginVM)
-    {
-        var user = await _userManager.FindByEmailAsync(loginVM.UserNameOrEmail);
-        if (user is null)
-        {
-            user = await _userManager.FindByNameAsync(loginVM.UserNameOrEmail);
-            if (user is null)
-            {
-                ModelState.AddModelError("", "Username/Email or Password incorrect");
-                return View(loginVM);
-            }
-        }
-
-        var signInResult = await _signInManager.PasswordSignInAsync(user, loginVM.Password, (bool)loginVM.RememberMe, true);
-
-        if (signInResult.IsLockedOut)
-        {
-            ModelState.AddModelError("", "Please try again soon");
-            return View(loginVM);
-        }
-
-        if (!signInResult.Succeeded)
-        {
-            ModelState.AddModelError("", "Username/Email or Password incorrect");
-            return View(loginVM);
-        }
-
-        return RedirectToAction("Index","Home");
-    }
-    #endregion
 
 
     #region Register
@@ -106,5 +66,54 @@ public class AuthController : Controller
 
 
 
+    #endregion
+
+    #region Login
+    public IActionResult Login()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Login(LoginViewModel loginVM)
+    {
+        var user = await _userManager.FindByEmailAsync(loginVM.UserNameOrEmail);
+        if (user is null)
+        {
+            user = await _userManager.FindByNameAsync(loginVM.UserNameOrEmail);
+            if (user is null)
+            {
+                ModelState.AddModelError("", "Username/Email or Password incorrect");
+                return View(loginVM);
+            }
+        }
+
+        var signInResult = await _signInManager.PasswordSignInAsync(user, loginVM.Password, (bool)loginVM.RememberMe, true);
+
+        if (signInResult.IsLockedOut)
+        {
+            ModelState.AddModelError("", "Please try again soon");
+            return View(loginVM);
+        }
+
+        if (!signInResult.Succeeded)
+        {
+            ModelState.AddModelError("", "Username/Email or Password incorrect");
+            return View(loginVM);
+        }
+
+        return RedirectToAction("Index","Home");
+    }
+    #endregion
+
+    #region Logout
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Logout()
+    {
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("Login");
+    }
     #endregion
 }

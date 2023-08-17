@@ -1,0 +1,12 @@
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\bin\Release\net6.0\Chat.Core.deps.json
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\bin\Release\net6.0\Chat.Core.dll
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\bin\Release\net6.0\Chat.Core.pdb
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\obj\Release\net6.0\Chat.Core.csproj.AssemblyReference.cache
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\obj\Release\net6.0\Chat.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\obj\Release\net6.0\Chat.Core.AssemblyInfoInputs.cache
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\obj\Release\net6.0\Chat.Core.AssemblyInfo.cs
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\obj\Release\net6.0\Chat.Core.csproj.CoreCompileInputs.cache
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\obj\Release\net6.0\Chat.Core.dll
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\obj\Release\net6.0\refint\Chat.Core.dll
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\obj\Release\net6.0\Chat.Core.pdb
+C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.Core\obj\Release\net6.0\ref\Chat.Core.dll

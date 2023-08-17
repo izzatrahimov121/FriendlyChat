@@ -1,9 +1,15 @@
-﻿@{
+﻿@model UserProfilViewModel
+@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <selection class="discussionsN">
+
+    <form id="logoutForm" asp-controller="Auth" asp-action="Logout" method="post">
+        <a asp-action="Login" asp-controller="Auth" class="btn btn-light" style="margin-top:10px;">Login Page</a>
+        <button type="submit" class="btn btn-light" style="margin-top:10px;">Logout</button>
+    </form>
 
     <div class="row py-5 px-4">
         <div class="col-md-8 mx-auto">
@@ -12,12 +18,12 @@
                 <div class="px-4 pt-0 pb-4 cover">
                     <div class="media align-items-end profile-head">
                         <div class="profile mr-3">
-                            <img src="./assets/images/@ViewBag.Image"
-                                 onclick="Modal(@ViewBag.Image)" width="130" class="rounded mb-2 img-thumbnail">
+                            <img src="./assets/images/@Model.Photo"
+                                 onclick="Modal('@Model.Photo')" width="130" class="rounded mb-2 img-thumbnail">
                             <a id="editProfil" class="btn btn-outline-dark btn-sm btn-block">Edit profile</a>
                         </div>
                         <div class="media-body mb-5 text-white">
-                            <h4 class="mt-0 mb-0">@ViewBag.UserName</h4>
+                            <h4 class="mt-0 mb-0">@Model.Username</h4>
                             <br />
                             <br />
                         </div>
@@ -26,7 +32,7 @@
                 <div class="bg-light p-4 d-flex justify-content-end text-center">
                     <ul class="list-inline mb-0">
                         <li id="Followers" class="list-inline-item">
-                            <h5 class="font-weight-bold mb-0 d-block">@ViewBag.Followers</h5>
+                            <h5 class="font-weight-bold mb-0 d-block">@Model.Followers</h5>
                             <small class="text-muted">
                                 <i class="fas fa-user mr-1"></i>Followers
                             </small>
@@ -41,32 +47,29 @@
                             <br />
                         </li>
                         <li id="Following" class="list-inline-item">
-                            <h5 class="font-weight-bold mb-0 d-block">@ViewBag.Following</h5>
+                            <h5 class="font-weight-bold mb-0 d-block">@Model.Following</h5>
                             <small class="text-muted">
                                 <i class="fas fa-user mr-1"></i>Following
                             </small>
                         </li>
                     </ul>
                 </div>
+                <div asp-validation-summary="ModelOnly" class="text-danger" style="margin-bottom:10px;"></div>
             </div>
-            <form id="editform" style="background-color:azure; margin-top:40px; display:none">
+            <form id="editform" method="post" enctype="multipart/form-data" style="background-color:azure; margin-top:40px; display:none">
                 <div style="margin-left:20px;margin-right:20px;">
                     <div class="form-group">
                         <label style="margin-top:5px;display: flex; flex-direction: row-reverse;"><i id="closeform" class="fa-solid fa-square-xmark fa-beat fa-2xl"></i></label>
                         <label for="usernameinput">User Name</label>
-                        <input type="text" class="form-control" id="usernameinput" value="@ViewBag.UserName" placeholder="Enter new user name" disabled>
+                        <input type="text" asp-for="Username" class="form-control" id="usernameinput" value="@Model.Username" placeholder="Enter new user name" disabled>
                     </div>
                     <div class="form-group">
                         <label for="emailinput">Email address</label>
-                        <input type="email" class="form-control" id="emailinput" value="@ViewBag.Email" aria-describedby="emailHelp" disabled placeholder="Enter new email">
+                        <input asp-for="Email" type="email" class="form-control" id="emailinput" value="@Model.Email" aria-describedby="emailHelp" disabled placeholder="Enter new email">
                     </div>
                     <div class="form-group">
-                        <label for="passwordinput">Password</label>
-                        <input type="password" class="form-control" id="passwordinput" disabled placeholder="New password">
-                    </div>
-                    <div class="form-group">
-                        <label for="confirminput">Confirm Password</label>
-                        <input type="password" class="form-control" id="confirminput" disabled placeholder="Confirm password">
+                        <label for="photoinput">Photo</label>
+                        <input type="file" asp-for="Image" class="form-control" id="photoinput" disabled placeholder="Change profil photo">
                     </div>
                     <a style="margin-bottom:10px;" id="changeinfo" class="btn btn-danger">Change information</a>
                     <button style="margin-bottom:10px;" type="submit" class="btn btn-success">Submit</button>

@@ -622,10 +622,10 @@
                         if (data != null) {
                             $.each(data, function (i, val) {
                                 if (val.isOnline) {
-                                    html += '<div onclick="GoChat(\'' + val.toUserName + '\',$(this))" class="discussion"><div class="photo" style = "background-image: url(\'../assets/images/' + val.toUserImage + '\');" ><div data-username="' + val.toUserName + '" class="online" ></div></div><div class="desc-contact"><p class="name">' + val.toUserName + '</p><p class="message">' + val.lastMessage + '</p></div><div class="timer">' + val.newMessagesCount + '</div></div>';
+                                    html += '<div onclick="GoChat(\'' + val.toUserName + '\',$(this))" class="discussion"><div class="photo" onclick="Modal(\'' + val.toUserImage + '\');event.stopPropagation()" style = "background-image: url(\'../assets/images/' + val.toUserImage + '\');" ><div data-username="' + val.toUserName + '" class="online" ></div></div><div class="desc-contact"><p class="name">' + val.toUserName + '</p><p class="message">' + val.lastMessage + '</p></div><div class="timer">' + val.newMessagesCount + '</div></div>';
                                 }
                                 else {
-                                    html += '<div onclick="GoChat(\'' + val.toUserName + '\',$(this))" class="discussion"><div class="photo" style = "background-image: url(\'../assets/images/' + val.toUserImage + '\');" ><div data-username="' + val.toUserName + '" class="" ></div></div><div class="desc-contact"><p class="name">' + val.toUserName + '</p><p class="message">' + val.lastMessage + '</p></div><div class="timer">' + val.newMessagesCount + '</div></div>';
+                                    html += '<div onclick="GoChat(\'' + val.toUserName + '\',$(this))" class="discussion"><div class="photo" onclick="Modal(\'' + val.toUserImage + '\');event.stopPropagation()" style = "background-image: url(\'../assets/images/' + val.toUserImage + '\');" ><div data-username="' + val.toUserName + '" class="" ></div></div><div class="desc-contact"><p class="name">' + val.toUserName + '</p><p class="message">' + val.lastMessage + '</p></div><div class="timer">' + val.newMessagesCount + '</div></div>';
                                 }
                             });
                         };
@@ -660,6 +660,9 @@
         function GoChat(name, el) {
             $(".message-active").removeClass("message-active");
             el.addClass("message-active");
+            $(".write-message").each(function () {
+                $(this).removeData("touser");
+            });
             $(".chat-icon").css("display", "none");
             $(".header-chat").css("display", "flex");
             $("#header-name").text(name);
@@ -724,7 +727,6 @@
                 var inputValue = $(this).val();
                 if ($.trim(inputValue) !== "") {
                     var toUser = $(".write-message").data("touser");
-                    console.log(toUser);
                     $.ajax({
                         url: "/Home/SendMessage",
                         type: "POST",
@@ -826,13 +828,13 @@
                         if (data != null) {
                             $.each(data, function (i, val) {
                                 if (val.requestStatus == "sendRequest") {
-                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button><button style="display:none;" class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button></div></div></div>';
+                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button><button style="display:none;" class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button></div></div></div>';
                                 }
                                 else if (val.requestStatus == "requested") {
-                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button><button style="display:none;" class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button></div></div></div>';
+                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button><button style="display:none;" class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button></div></div></div>';
                                 }
                                 else {//followed
-                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-danger" onclick="DeleteFollowUp(\'' + val.userName + '\',$(this))">Do not follow</button><button class="btn btn-success" style="display:none;" onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button><button class="btn btn-secondary" style="display:none;" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button></div></div></div>';
+                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-danger" onclick="DeleteFollowUp(\'' + val.userName + '\',$(this))">Do not follow</button><button class="btn btn-success" style="display:none;" onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button><button class="btn btn-secondary" style="display:none;" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button></div></div></div>';
                                 }
                             });
                         }

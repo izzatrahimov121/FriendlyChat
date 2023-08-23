@@ -45,12 +45,36 @@
       "PackagePath": "staticwebassets\\assets\\images\\default.png"
     },
     {
-      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\nonotification.jpg",
-      "PackagePath": "staticwebassets\\assets\\images\\nonotification.jpg"
-    },
-    {
       "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\js\\jquery-3.7.0.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\jquery-3.7.0.min.js"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\download (1).jpeg",
+      "PackagePath": "staticwebassets\\assets\\media\\photos\\download (1).jpeg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\download (2).jpeg",
+      "PackagePath": "staticwebassets\\assets\\media\\photos\\download (2).jpeg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\download.jpeg",
+      "PackagePath": "staticwebassets\\assets\\media\\photos\\download.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\mmee.jpeg",
+      "PackagePath": "staticwebassets\\assets\\media\\photos\\mmee.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\nonotification.jpg",
+      "PackagePath": "staticwebassets\\assets\\media\\photos\\nonotification.jpg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\psg-messi_66ad798.jpg",
+      "PackagePath": "staticwebassets\\assets\\media\\photos\\psg-messi_66ad798.jpg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\videos\\messi.mp4",
+      "PackagePath": "staticwebassets\\assets\\media\\videos\\messi.mp4"
     },
     {
       "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\sass\\style.scss",

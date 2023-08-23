@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<section class="discussions" style="width:7%; display:inline-block;">
+    <a asp-action="SharePost" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
+        <i class="fa-solid fa-square-share-nodes" style="font-size:30px;"></i>
+    </a>
+    <a asp-action="Index2" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
+        <i class="far fa-comments" style="font-size:20px;"></i>
+    </a>
+</section>
+
+<section class="chat" style="height:700px;width:85%;display:inline-block;overflow-y:scroll;overflow-x:hidden">
+    <div class="Posts">
+        <hr />
+        <div class="card mb-3" style="width:95%;margin-left:25px;">
+            <video style="width:100%;max-height:650px;aspect-ratio:2/1;object-fit:contain" controls>
+                <source src="/assets/media/videos/messi.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="card-body">
+                <img src="~/assets/images/1a35d366-1640-4812-a5da-c38cbfb3a903WhatsApp Image 2023-08-16 at 14.22.47.jpg" style="width:60px;border-radius:50%" />
+                <h4 style="display:inline-block;" class="card-title">Izzet Rehimov</h4>
+                <p class="card-text" style="display:inline-block;">
+                    <small class="text-muted">3 mins ago</small>
+                </p>
+                <p class="card-text">This is a wider card with supportibit longer This is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longerThis is a wider card with supportibit longer</p>
+                <div style="display:flex;justify-content:space-between">
+                    <!--Users list for send post-->
+                    <div class="btn-group dropright" style="display:inline-block">
+                        <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                            <div style="background-color:rgb(224, 96, 182); width:250px; max-height:400px;overflow-y:scroll;overflow-x:hidden;">
+                                <div class="user-list-item">
+                                    <span class="user-name">User 2</span>
+                                    <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                                </div>
+                            </div>
+                            <button type="button" class="dropdown-item active btn btn-primary">Send</button>
+                        </div>
+                    </div>
+                    <!--like dislike button-->
+                    <div style="display:inline-block">
+                        <p class="like-count" style="display:inline-block">25</p>
+                        <button type="button" class="btn btn-outline-primary like">
+                            <i class="fa-regular fa-heart"></i>
+                        </button>
+                        <button type="button" class="btn btn-outline-primary dislike" style="display:none;">
+                            <i class="fa-solid fa-heart fa-beat" style="color: #e23232;"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card mb-3" style="width:95%;margin-left:25px;">
+            <img class="card-img-top" onclick="MediaModal('mmee.jpeg')" src="../assets/media/photos/mmee.jpeg" style="width:100%;max-height:650px;aspect-ratio:2/1;object-fit:contain" alt="Card image cap">
+            <div class="card-body">
+                <img class="profil" src="~/assets/images/1a35d366-1640-4812-a5da-c38cbfb3a903WhatsApp Image 2023-08-16 at 14.22.47.jpg" style="width:60px;border-radius:50%" />
+                <h4 style="display:inline-block;" class="card-title">Izzet Rehimov</h4>
+                <p class="card-text" style="display:inline-block;">
+                    <small class="text-muted">3 mins ago</small>
+                </p>
+                <p class="card-text">This is a wider card with supportibit longer</p>
+                <div class="btn-group dropright">
+                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                        <div style="background-color:rgb(224, 96, 182); width:250px; max-height:400px;overflow-y:scroll;overflow-x:hidden;">
+                            <div class="user-list-item">
+                                <span class="user-name">User 2</span>
+                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                            </div>
+                            <div class="user-list-item">
+                                <span class="user-name">User adminnn 3</span>
+                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                            </div>
+                            <div class="user-list-item">
+                                <span class="user-name">User 1123</span>
+                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                            </div>
+                            <div class="user-list-item">
+                                <span class="user-name">User 2</span>
+                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                            </div>
+                            <div class="user-list-item">
+                                <span class="user-name">User 2</span>
+                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                            </div>
+                            <div class="user-list-item">
+                                <span class="user-name">User adminnn 3</span>
+                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                            </div>
+                        </div>
+                        <button type="button" class="dropdown-item active btn btn-primary">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@Html.Partial("SharePost");

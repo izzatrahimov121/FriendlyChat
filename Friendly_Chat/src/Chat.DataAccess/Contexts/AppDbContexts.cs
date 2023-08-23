@@ -15,4 +15,6 @@ public class AppDbContexts : IdentityDbContext
     DbSet<Friendship> Friendships { get; set; }
     DbSet<FollowingRequest> FollowingRequests { get; set;}
     DbSet<Message> Messages { get; set; }
+    DbSet<Post> Posts { get; set; }
+    DbSet<Like> Likes { get; set; }
 }

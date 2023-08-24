@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <section class="discussions" style="width:7%; display:inline-block;">
-    <a asp-action="SharePost" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
+    <a asp-action="Share" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
         <i class="fa-solid fa-square-share-nodes" style="font-size:30px;"></i>
     </a>
     <a asp-action="Index2" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
@@ -104,4 +104,4 @@
     </div>
 </section>
 
-@Html.Partial("SharePost");
+@Html.Partial("Share");

@@ -1,0 +1,29 @@
+﻿@model SharePostViewModel;
+
+<section class="discussions" style="width:7%; display:inline-block;">
+    <a asp-action="Share" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
+        <i class="fa-solid fa-square-share-nodes" style="font-size:30px;"></i>
+    </a>
+    <a asp-action="Index2" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
+        <i class="far fa-comments" style="font-size:20px;"></i>
+    </a>
+</section>
+
+<section class="chat" style="height:700px;width:85%;display:inline-block;overflow-y:scroll;overflow-x:hidden">
+    <a class="btn btn-outline-primary" asp-action="Index" asp-controller="Media">Back</a>
+    <h1>Share post</h1>
+    <hr />
+    <form method="post" enctype="application/x-www-form-urlencoded">
+        <div class="form-group">
+            <label for="fileinput">Select your 'Video' and 'Image' file</label>
+            <input type="file" asp-for="File" class="form-control" id="fileinput" placeholder="Select file">
+        </div>
+        <div class="form-group">
+            <label for="decriptioninput" style="display:inline-block">Add Description(Max length 1500character)</label>
+            <textarea type="text" maxlength="1500" asp-for="Description" class="form-control" id="decriptioninput" style="resize: vertical;box-sizing: border-box;min-height:120px;max-height:300px;overflow-y:auto" placeholder="Enter decription"></textarea>
+        </div>
+        <div style="display:flex;justify-content:right">
+            <button type="submit" class="btn btn-outline-primary">Share post</button>
+        </div>
+    </form>
+</section>

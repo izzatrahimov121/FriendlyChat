@@ -42,6 +42,9 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 builder.Services.AddScoped<IFriendshipRepository, FriendshipRepository>();
 builder.Services.AddScoped<IRequestRepository, RequestRepository>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
+builder.Services.AddScoped<ILikeRepository, LikeRepository>();
+builder.Services.AddScoped<IPostRepository, PostRepository>();
 
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<OnlineUsersService>();
@@ -68,7 +71,7 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
 	name: "default",
-	pattern: "{controller=Home}/{action=Index}/{id?}");
+	pattern: "{controller=Home}/{action=Index}");
 
 app.UseEndpoints(endpoints =>
 {

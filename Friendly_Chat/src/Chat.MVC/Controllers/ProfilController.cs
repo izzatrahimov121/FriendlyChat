@@ -5,7 +5,6 @@ using Chat.MVC.Models.Profil;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Protocol.Plugins;
 
 namespace Chat.MVC.Controllers;
 

@@ -44,7 +44,7 @@ public class FileService : IFileService
         var fileName = String.Empty;
         if (file is not null)
         {
-            if (!file.CheckFileFormat("image/") || !file.CheckFileFormat("video/"))
+            if (!file.CheckFileFormat("image/") && !file.CheckFileFormat("video/"))
             {
                 throw new IncorrectFileFormatException("Please select 'Image' or 'Video' type files only");
             }

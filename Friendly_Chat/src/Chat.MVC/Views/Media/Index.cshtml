@@ -3,16 +3,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <section class="discussions" style="width:7%; display:inline-block;">
-    <a asp-action="Share" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
-        <i class="fa-solid fa-square-share-nodes" style="font-size:30px;"></i>
+    <br />
+    <br />
+    <a asp-action="Index2" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;height:70px;">
+        <i class="fa-solid fa-up-right-from-square " style="font-size:20px;"></i>
+        <br />
+        <p style="font-size:10px;">My Shared</p>
     </a>
-    <a asp-action="Index2" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
+    <a asp-action="Share" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px; height:70px;">
+        <i class="fa-solid fa-square-share-nodes" style="font-size:20px;"></i>
+        <br />
+        <p style="font-size:10px;">New post</p>
+    </a>
+    <a asp-action="Index2" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px; height:70px;">
         <i class="far fa-comments" style="font-size:20px;"></i>
+        <br />
+        <p style="font-size:10px;">Sent posts</p>
     </a>
+
 </section>
 
 <section class="chat" style="height:700px;width:85%;display:inline-block;overflow-y:scroll;overflow-x:hidden">
-    <div class="Posts">
+    <div class="Posts" id="posts">
         <hr />
         <div class="card mb-3" style="width:95%;margin-left:25px;">
             <video style="width:100%;max-height:650px;aspect-ratio:2/1;object-fit:contain" controls>
@@ -103,5 +115,3 @@
         </div>
     </div>
 </section>
-
-@Html.Partial("Share");

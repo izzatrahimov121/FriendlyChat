@@ -1,11 +1,22 @@
 ﻿@model SharePostViewModel;
 
 <section class="discussions" style="width:7%; display:inline-block;">
-    <a asp-action="Share" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
-        <i class="fa-solid fa-square-share-nodes" style="font-size:30px;"></i>
+    <br />
+    <br />
+    <a asp-action="Index2" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;height:70px;">
+        <i class="fa-solid fa-up-right-from-square " style="font-size:20px;"></i>
+        <br />
+        <p style="font-size:10px;">My Shared</p>
     </a>
-    <a asp-action="Index2" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px;">
+    <a asp-action="Share" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px; height:70px;">
+        <i class="fa-solid fa-square-share-nodes" style="font-size:20px;"></i>
+        <br />
+        <p style="font-size:10px;">New post</p>
+    </a>
+    <a asp-action="Index2" asp-controller="Media" class="btn btn-outline-primary" style="margin-top:10px; height:70px;">
         <i class="far fa-comments" style="font-size:20px;"></i>
+        <br />
+        <p style="font-size:10px;">Sent posts</p>
     </a>
 </section>
 

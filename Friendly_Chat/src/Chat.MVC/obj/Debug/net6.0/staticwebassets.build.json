@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Wsm+tE8pAh2/8ofl94InUyWVvOEeKzYuJ6xLy/nM6ZA=",
+  "Hash": "/ZvFCx0jjgs4OG/cNV958G+DdGRWVAQh7UMmpdnluzQ=",
   "Source": "Chat.MVC",
   "BasePath": "_content/Chat.MVC",
   "Mode": "Default",
@@ -238,6 +238,23 @@
       "OriginalItemSpec": "wwwroot\\assets\\js\\jquery-3.7.0.min.js"
     },
     {
+      "Identity": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\6485857a-8aaf-43d5-9f3f-ab7f717becd1xZ6djKSGZAr7zHK7uZf6XF-1200-80.jpg.webp",
+      "SourceId": "Chat.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\",
+      "BasePath": "_content/Chat.MVC",
+      "RelativePath": "assets/media/photos/6485857a-8aaf-43d5-9f3f-ab7f717becd1xZ6djKSGZAr7zHK7uZf6XF-1200-80.jpg.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\media\\photos\\6485857a-8aaf-43d5-9f3f-ab7f717becd1xZ6djKSGZAr7zHK7uZf6XF-1200-80.jpg.webp"
+    },
+    {
       "Identity": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\download (1).jpeg",
       "SourceId": "Chat.MVC",
       "SourceType": "Discovered",
@@ -338,6 +355,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\media\\photos\\psg-messi_66ad798.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\videos\\01bdce06-3569-45f0-a668-e5b6ab280951Prime Messi Skills \uD83D\uDE0D.mp4",
+      "SourceId": "Chat.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\",
+      "BasePath": "_content/Chat.MVC",
+      "RelativePath": "assets/media/videos/01bdce06-3569-45f0-a668-e5b6ab280951Prime Messi Skills \uD83D\uDE0D.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\media\\videos\\01bdce06-3569-45f0-a668-e5b6ab280951Prime Messi Skills \uD83D\uDE0D.mp4"
+    },
+    {
+      "Identity": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\videos\\8947c4e7-e2a5-4d6c-9f6e-2fd8b4a2b0ccMessi Edit.mp4",
+      "SourceId": "Chat.MVC",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\",
+      "BasePath": "_content/Chat.MVC",
+      "RelativePath": "assets/media/videos/8947c4e7-e2a5-4d6c-9f6e-2fd8b4a2b0ccMessi Edit.mp4",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\media\\videos\\8947c4e7-e2a5-4d6c-9f6e-2fd8b4a2b0ccMessi Edit.mp4"
     },
     {
       "Identity": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\videos\\messi.mp4",

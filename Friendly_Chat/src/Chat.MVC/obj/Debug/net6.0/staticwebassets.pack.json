@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\assets\\js\\jquery-3.7.0.min.js"
     },
     {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\6485857a-8aaf-43d5-9f3f-ab7f717becd1xZ6djKSGZAr7zHK7uZf6XF-1200-80.jpg.webp",
+      "PackagePath": "staticwebassets\\assets\\media\\photos\\6485857a-8aaf-43d5-9f3f-ab7f717becd1xZ6djKSGZAr7zHK7uZf6XF-1200-80.jpg.webp"
+    },
+    {
       "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\download (1).jpeg",
       "PackagePath": "staticwebassets\\assets\\media\\photos\\download (1).jpeg"
     },
@@ -71,6 +75,14 @@
     {
       "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\psg-messi_66ad798.jpg",
       "PackagePath": "staticwebassets\\assets\\media\\photos\\psg-messi_66ad798.jpg"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\videos\\01bdce06-3569-45f0-a668-e5b6ab280951Prime Messi Skills \uD83D\uDE0D.mp4",
+      "PackagePath": "staticwebassets\\assets\\media\\videos\\01bdce06-3569-45f0-a668-e5b6ab280951Prime Messi Skills \uD83D\uDE0D.mp4"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\videos\\8947c4e7-e2a5-4d6c-9f6e-2fd8b4a2b0ccMessi Edit.mp4",
+      "PackagePath": "staticwebassets\\assets\\media\\videos\\8947c4e7-e2a5-4d6c-9f6e-2fd8b4a2b0ccMessi Edit.mp4"
     },
     {
       "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\videos\\messi.mp4",

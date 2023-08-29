@@ -6,6 +6,7 @@ using Chat.MVC.Utilites.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing.Printing;
 
 namespace Chat.MVC.Controllers;
 
@@ -86,14 +87,9 @@ public class MediaController : Controller
         }
     }
 
-    [HttpGet]
-    public async Task<JsonResult> GetLastTenPost()
+    public async Task<List<GetPostViewModel>> Posts()
     {
         var loginUser = await _userManager.FindByNameAsync(HttpContext.User.Identity?.Name);
-        if (loginUser is null)
-        {
-            return Json(null);
-        }
 
         List<GetPostViewModel> getPosts = new List<GetPostViewModel>();
 
@@ -195,8 +191,14 @@ public class MediaController : Controller
         }
 
         getPosts = getPosts.DistinctBy(r => r.PostName).ToList();
-        return Json(getPosts.OrderByDescending(p => p.CreatedAt));
+        return getPosts.OrderByDescending(p => p.CreatedAt).ToList();
     }
 
-
+    [HttpGet]
+    public async Task<JsonResult> GetPosts(int count)
+    {
+        var posts = await Posts();
+        if (count == 0) { return Json(posts.Take(2).ToList()); }
+        else { return Json(posts.Skip(count * 2).Take(2).ToList()); }
+    }
 }

@@ -17,6 +17,18 @@
       "PackagePath": "staticwebassets\\assets\\css\\NotificatioStyle.css"
     },
     {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\css\\bootstrap4.0.0.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\bootstrap4.0.0.min.css"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\css\\bootstrap5.0.2.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\bootstrap5.0.2.min.css"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\css\\font-awesome_6.4.0_all.min.css",
+      "PackagePath": "staticwebassets\\assets\\css\\font-awesome_6.4.0_all.min.css"
+    },
+    {
       "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\images\\099fdea4-85ca-4d35-b50a-cae764134d7eWhatsApp Image 2023-07-26 at 12.42.14.jpeg",
       "PackagePath": "staticwebassets\\assets\\images\\099fdea4-85ca-4d35-b50a-cae764134d7eWhatsApp Image 2023-07-26 at 12.42.14.jpeg"
     },
@@ -45,8 +57,24 @@
       "PackagePath": "staticwebassets\\assets\\images\\default.png"
     },
     {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\js\\bootstrap4.0.0.bundle.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\bootstrap4.0.0.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\js\\cdnjs.cloudflare.com_ajax_libs_microsoft-signalr_5.0.0-preview.2.20167.3_signalr.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\cdnjs.cloudflare.com_ajax_libs_microsoft-signalr_5.0.0-preview.2.20167.3_signalr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\js\\code.jquery.com_jquery-3.7.1.slim.min.js",
+      "PackagePath": "staticwebassets\\assets\\js\\code.jquery.com_jquery-3.7.1.slim.min.js"
+    },
+    {
       "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\js\\jquery-3.7.0.min.js",
       "PackagePath": "staticwebassets\\assets\\js\\jquery-3.7.0.min.js"
+    },
+    {
+      "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\js\\mainscript.js",
+      "PackagePath": "staticwebassets\\assets\\js\\mainscript.js"
     },
     {
       "Id": "C:\\Users\\izzet\\OneDrive\\Masaüstü\\Friendly Chat\\Friendly_Chat\\src\\Chat.MVC\\wwwroot\\assets\\media\\photos\\11463b06-1735-4ac4-acbc-845b8cb1e357dowqqqnload.jpeg",

@@ -1,0 +1,29 @@
+﻿
+
+<section class="discussions" style="width:8%; display:inline-block; overflow-x:hidden">
+    <br />
+    <br />
+    <a asp-action="MyShared" asp-controller="Media" id="myshared" class="btn btn-outline-primary" style="margin-top:10px;height:70px; width:70px;">
+        <i class="fa-solid fa-up-right-from-square " style="font-size:20px;"></i>
+        <br />
+        <p style="font-size:10px;">My Shared</p>
+    </a>
+    <a asp-action="Share" asp-controller="Media" id="newpost" class="btn btn-outline-primary" style="margin-top:10px; height:70px; width:70px;">
+        <i class="fa-solid fa-square-share-nodes" style="font-size:20px;"></i>
+        <br />
+        <p style="font-size:10px;">New post</p>
+    </a>
+    <a asp-action="Index2" asp-controller="Media" id="sentpost" class="btn btn-outline-primary" style="margin-top:10px; height:70px; width:70px;">
+        <i class="far fa-comments" style="font-size:20px;"></i>
+        <br />
+        <p style="font-size:10px;">Sent posts</p>
+    </a>
+
+</section>
+
+<section class="chat chatpost" style="height:700px;width:85%;display:inline-block;overflow-y:scroll;overflow-x:hidden">
+    <div class="Posts" id="posts">
+        <hr />
+        
+    </div>
+</section>

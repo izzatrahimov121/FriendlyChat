@@ -7,20 +7,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FrendlyChat.az</title>
 
+    @*<link href="~/assets/css/font-awesome_6.4.0_all.min.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="~/assets/css/notificatiostyle.css" rel="stylesheet" />
+    <link href="~/assets/css/bootstrap5.0.2.min.css" rel="stylesheet" />
+    <link href="~/assets/css/bootstrap4.0.0.min.css" rel="stylesheet" />
+    @*<script src="~/assets/js/bootstrap4.0.0.bundle.min.js"></script>*@
+    <script src="~/assets/js/code.jquery.com_jquery-3.7.1.slim.min.js"></script>
+    <script src="~/assets/js/jquery-3.7.0.min.js" type="text/javascript"></script>
+    <script src="~/assets/js/cdnjs.cloudflare.com_ajax_libs_microsoft-signalr_5.0.0-preview.2.20167.3_signalr.min.js"></script>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
-          integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">*@
+    @*<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">*@
+    @*<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>*@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
             crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" type="text/css" href="../assets/css/NotificatioStyle.css">
-
     <style>
         .user-list-item {
             display: flex;
@@ -657,7 +663,8 @@
 
 </head>
 
-<body style="overflow-y:hidden; margin-top:3px;">
+<body>
+    <div id="connectionstatus"  style="height:40px;text-align:center;color:white;font-size:25px;display:none"></div>
     <div id="myMediaModal" class="MediaModal">
         <span class="closeModal">&times;</span>
         <img class="MediaModal-content" id="img">
@@ -711,10 +718,8 @@
     </div>
 
 
-    <script src="~/assets/js/jquery-3.7.0.min.js" type="text/javascript"></script>
-    @*<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/3.1.12/signalr.min.js"></script>*@
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/7.0.10/signalr.min.js" integrity="sha512-P5G3EZ6/6i+YfHLRhH32IxWKYtw0XyeYODsBn6eXzHt7W0Z+MZ1kySXUT0ec0+WuxHEoYkjHlSnTCItpg1XMGg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <!--The Layout Script-->
+
+
     <script>
         $(document).ready(function () {
             var isnotification = "@ViewBag.IsNewNotification";
@@ -723,31 +728,65 @@
                 $("#li4").find("i").addClass("fa-bell fa-beat-fade");
             }
 
+
+
+
+            //---------------SignalR-----------------------------------
+            const connection = new signalR.HubConnectionBuilder()
+                .withUrl("/onlineusershub")
+                .withAutomaticReconnect([1000,3000,5000,10000,30000])//var ola baglantı qoparsa avtomatic default olaraq 0-2-10-30 cu sanielerde 4defe yeniden baglanti qurur. parametirle saniyeleri daxil ederek sayı ve zamani artıra bilirik 
+                .build();
+
+            // Baglantı heç olmadığı halsa ilse bu function ile bağlantiyi her 3 saniede bir yeniden qurmağa çalışırıq
+            async function StartConnection() {
+                try {
+                    await connection.start();
+                }
+                catch (error) {
+                    setTimeout(() => StartConnection(), 3000);
+                }
+            }
+            StartConnection();
+
+            //yenidən bağlantı qurmağa çalışmazdan əvvəl bu funcion tetiklənir
+            connection.onreconnecting(error =>{
+                $("#connectionstatus").css("background-color", "blue");
+                $("#connectionstatus").html("Disconnected. Re-establishing connection...")
+                $("#connectionstatus").fadeIn(2000);
+            });
+            //yenidən bağlantı qurmağa başlananda bu funcion tetiklənir
+            connection.onreconnected(error =>{
+                $("#connectionstatus").css("background-color", "green");
+                $("#connectionstatus").html("Connection established");
+                $("#connectionstatus").fadeIn(2000, () => {
+                    setTimeout(() => {
+                        $("#connectionstatus").fadeOut(3000);
+                    }, 4000);
+                });
+            });
+            //yenidən bağlantı qurmaq olmadığında yəne faild olduğunda bu funcion tetiklənir
+            connection.onclose(error => {
+                $("#connectionstatus").css("background-color", "red");
+                $("#connectionstatus").html("Connection could not be established");
+                $("#connectionstatus").fadeIn(2500);
+            });
+
+            connection.on("UserConnected", function (username) {
+                $("div[data-username='" + username + "']").addClass("online");
+            });
+
+            connection.on("UserDisconnected", function (username) {
+                $("div[data-username='" + username + "']").removeClass("online");
+            });
+
+
+
+
+
             var menu = '@ViewBag.ActiveMenu';
             $(".navitem").find("li").removeClass("item-active");
             if (menu == "Home") {
                 $("#li1").addClass("item-active");
-            }
-            else if (menu == "Media") {
-                $("#li5").addClass("item-active");
-            }
-            else if (menu == "Profil") {
-                $("#li2").addClass("item-active");
-            }
-            else if (menu == "Follow") {
-                $("#li3").addClass("item-active");
-            }
-            else if (menu == "Notification") {
-                $("#li4").addClass("item-active");
-            };
-        });
-    </script>
-    <!--End Layout Script-->
-    <!--The Home Script-->
-    <script>
-        $(document).ready(function () {
-            var menu = '@ViewBag.ActiveMenu';
-            if (menu == "Home") {
                 $.ajax({
                     url: "/Home/GetUsers",
                     type: "GET",
@@ -769,28 +808,212 @@
                     }
                 });
             }
+            else if (menu == "Media") {
+                $("#li5").addClass("item-active");
+                var count = 0;
+                GetPost(count);
+            }
+            else if (menu == "Profil") {
+                $("#li2").addClass("item-active");
+            }
+            else if (menu == "Follow") {
+                $("#li3").addClass("item-active");
+                $("#search").keyup(function () {
+                var username = $("#search").val();
+                $.ajax({
+                    url: "/Follow/SearchByUsername",
+                    type: "GET",
+                    data: { username: username },
+                    dataType: "json",
+                    success: function (data) {
+                        var html = "";
+                        if (data != null) {
+                            $.each(data, function (i, val) {
+                                if (val.requestStatus == "sendRequest") {
+                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button><button style="display:none;" class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button></div></div></div>';
+                                }
+                                else if (val.requestStatus == "requested") {
+                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button><button style="display:none;" class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button></div></div></div>';
+                                }
+                                else {//followed
+                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-danger" onclick="DeleteFollowUp(\'' + val.userName + '\',$(this))">Do not follow</button><button class="btn btn-success" style="display:none;" onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button><button class="btn btn-secondary" style="display:none;" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button></div></div></div>';
+                                }
+                            });
+                        }
+                        else {
+                            console.log("1sq");
+                            html += '<div class="card"><div class="card-body"style="display:-webkit-box;display:-ms-flexbox;display:flex;"><p>Heç bir netice yoxdur</p>';
+                        }
+                        $('#search_box').empty();
+                        $('#search_box').append(html);
+                    }
+                });
+            });
+            }
+            else if (menu == "Notification") {
+                $("#li4").addClass("item-active");
+                $.ajax({
+                    url: "/Notification/GetNotifications",
+                    type: "Get",
+                    dataType: "json",
+                    success: function (data) {
+                        var html = '';
+                        if (data != null) {
+                            $.each(data, function (i, val) {
+                                html += '<div class="notification-list notification-list--unread" style="height:90px;width:900px;margin-left:15px;"><div class="notification-list_content"><div class="notification-list_img"><img class="myimg11" onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '" alt="user"></div><div class="notification-list_detail"><p style="margin-top:15px; font-size:20px"><b>' + val.fromUser + '</b> sent you a friend request-  ->' + val.date + '</p></div></div><div class="notification-list_feature-img buttons"><button class="btn button-37" onclick="Accept(\'' + val.fromUser + '\',$(this))" role="button">Accept</button><button class="btn button-37-1" onclick="Reject(\'' + val.fromUser + '\',$(this))" role="button">Reject</button></div></div>';
+                            });
+                        }
+                        else {
+                            html += '<img src="../assets/images/nonotification.jpg" alt="user" style="width:300px;margin-left:300px;">';
+                        }
+                        $('#notification_box').empty();
+                        $('#notification_box').append(html);
+                    }
+                });
+            };
+
+
+            //-------MEDIA-----------
+            function GetPost(count) {
+                $.ajax({
+                    url: "/Media/GetPosts",
+                    type: "GET",
+                    data: { count: count },
+                    dataType: "json",
+                    success: function (data) {
+                        var html = "";
+                        if (data != null) {
+                            $.each(data, function (i, val) {
+                                if (val.postType == "image") {
+                                    html += `<div class="card mb-3" style="width:95%;margin-left:25px;">
+                                                                                                                                                                                                                                                                            <img class="card-img-top" onclick="MediaModal('`+ val.postName + `')" src="../assets/media/photos/` + val.postName + `" style="width:100%;max-height:650px;aspect-ratio:2/1;object-fit:contain" alt="Card image cap">
+                                                                                                               <div class="card-body">
+                                                                                                                           <img class="profil" src="../assets/images/`+ val.userPhoto + `" style="width:60px;border-radius:50%" />
+                                                                                                                           <h4 style="display:inline-block;" class="card-title">`+ val.userName + `</h4>
+                                                                                                                   <p class="card-text" style="display:inline-block;">
+                                                                                                                                               <small class="text-muted">&nbsp;&nbsp;&nbsp;`+ val.date + `</small>
+                                                                                                                   </p>
+                                                                                                                           <p class="card-text">`+ val.description + `</p>
+                                                                                                                        <div class="btn-group dropright" style="display:inline-block">
+                                                                                                                               <button class="btn btn-outline-primary dropdown-toggle" onclick="dropDwn($(this))" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                                                           <i class="fa-solid fa-paper-plane"></i>
+                                                                                                                       </button>
+                                                                                                                       <div class="dropdown-menu">
+                                                                                                                           <div class="userlist" style="background-color:rgb(224, 96, 182); width:250px; max-height:400px;overflow-y:scroll;overflow-x:hidden;">
+                                                                                                                               <div class="user-list-item">
+                                                                                                                                   <span class="user-name">User 2</span>
+                                                                                                                                   <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                                                                                                                               </div>
+                                                                                                                               <div class="user-list-item">
+                                                                                                                                   <span class="user-name">User adminnn 3</span>
+                                                                                                                                   <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                                                                                                                               </div>
+                                                                                                                               <div class="user-list-item">
+                                                                                                                                   <span class="user-name">User 1123</span>
+                                                                                                                                   <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                                                                                                                               </div>
+                                                                                                                               <div class="user-list-item">
+                                                                                                                                   <span class="user-name">User 2</span>
+                                                                                                                                   <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                                                                                                                               </div>
+                                                                                                                               <div class="user-list-item">
+                                                                                                                                   <span class="user-name">User 2</span>
+                                                                                                                                   <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                                                                                                                               </div>
+                                                                                                                               <div class="user-list-item">
+                                                                                                                                   <span class="user-name">User adminnn 3</span>
+                                                                                                                                   <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                                                                                                                               </div>
+                                                                                                                           </div>
+                                                                                                                           <button type="button" class="dropdown-item active btn btn-primary">Send</button>
+                                                                                                                       </div>
+                                                                                                                   </div>
+                                                                                                                           <!--like dislike button-->
+                                                                    <p class="like-count" style="display:inline-block">25</p>
+                                                                    <button type="button" class="btn btn-outline-primary like">
+                                                                        <i class="fa-regular fa-heart"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn btn-outline-primary dislike" style="display:none;">
+                                                                        <i class="fa-solid fa-heart fa-beat" style="color: #e23232;"></i>
+                                                                    </button>
+                                                                </div>
+                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                        </div>`;
+                                }
+                                else if (val.postType == "video") {
+                                    html += `<div class="card mb-3" style="width:95%;margin-left:25px;">
+                                                                                                                                                                                               <video style="width:100%;max-height:650px;aspect-ratio:2/1;object-fit:contain" controls>
+                                                                                                                                                                                                           <source src="/assets/media/videos/`+ val.postName + `" type="video/mp4">
+                                                                                                                                                                                                   Your browser does not support the video tag.
+                                                                                                                                                                                               </video>
+                                                                                                                                                                                               <div class="card-body">
+                                                                                                                                                                                                                   <img src="../assets/images/`+ val.userPhoto + `" style="width:60px;border-radius:50%" />
+                                                                                                                                                                                                           <h4 style="display:inline-block;" class="card-title">`+ val.userName + `</h4>
+                                                                                                                                                                                                   <p class="card-text" style="display:inline-block;">
+                                                                                                                                                                                                                                       <small class="text-muted">&nbsp;&nbsp;&nbsp;`+ val.date + `</small>
+                                                                                                                                                                                                   </p>
+                                                                                                                                                                                                         <p class="card-text">`+ val.description + `</p>
+                                                                                                                                                                                                 <div style="display:flex;justify-content:space-between">
+                                                                                                                                                                                                     <!--Users list for send post-->
+                                                                                                                                                                                                     <div class="btn-group dropright" style="display:inline-block">
+                                                                                                                                                                                                                 <button type="button" class="btn btn-outline-primary dropdown-toggle" onclick="dropDwn($(this))" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                                                                                                                                                             <i class="fa-solid fa-paper-plane"></i>
+                                                                                                                                                                                                         </button>
+                                                                                                                                                                                                         <div class="dropdown-menu">
+                                                                                                                                                                                                             <div class="userlist" style="background-color:rgb(224, 96, 182); width:250px; max-height:400px;overflow-y:scroll;overflow-x:hidden;">
+                                                                                                                                                                                                                 <div class="user-list-item">
+                                                                                                                                                                                                                     <span class="user-name">User 2</span>
+                                                                                                                                                                                                                     <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
+                                                                                                                                                                                                                 </div>
+                                                                                                                                                                                                             </div>
+                                                                                                                                                                                                             <button type="button" class="dropdown-item active btn btn-primary">Send</button>
+                                                                                                                                                                                                         </div>
+                                                                                                                                                                                                     </div>
+                                                                                                                                                                                                     <!--like dislike button-->
+                                                                                                                                                                                                     <div style="display:inline-block">
+                                                                                                                                                                                                         <p class="like-count" style="display:inline-block">25</p>
+                                                                                                                                                                                                         <button type="button" class="btn btn-outline-primary like">
+                                                                                                                                                                                                             <i class="fa-regular fa-heart"></i>
+                                                                                                                                                                                                         </button>
+                                                                                                                                                                                                         <button type="button" class="btn btn-outline-primary dislike" style="display:none;">
+                                                                                                                                                                                                             <i class="fa-solid fa-heart fa-beat" style="color: #e23232;"></i>
+                                                                                                                                                                                                         </button>
+                                                                                                                                                                                                     </div>
+                                                                                                                                                                                                 </div>
+                                                                                                                                                                                             </div>
+                                                                                                                                                                                        </div>`;
+                                }
+                            });
+                        }
+                        //$("#posts").empty();
+                        $("#posts").append(html);
+                    }
+                });
+            }
+            var x = 0;
+            var take = 1;
+            var currentScroll = 0;
+            var p = 0;
+            $(".chatpost").scroll(function () {
+                currentScroll = $(this).scrollTop();
+                if (p <= currentScroll) {
+                    x += 1;
+                    if (x == 55) {
+                        GetPost(take)
+                        take += 1;
+                        x = 0;
+                        p = 0;
+                        currentScroll = 0;
+                    }
+                }
+                p = currentScroll;
+            });
+
         });
 
 
-        const connection = new signalR.HubConnectionBuilder()
-            .withUrl("/onlineusershub")
-            .build();
 
-        connection.on("UserConnected", function (username) {
-            //console.log(username + " connected.");
-            $("div[data-username='" + username + "']").addClass("online");
-        });
-
-        connection.on("UserDisconnected", function (username) {
-            //console.log(username + " disconnected.");
-            $("div[data-username='" + username + "']").removeClass("online");
-        });
-        connection.start();
-
-
-
-
-
+        //----------HOME-----------------------------
         var GetAudio = new Audio("../assets/audio/get.mp3")
         function GoChat(name, el) {
             $(".message-active").removeClass("message-active");
@@ -853,9 +1076,6 @@
                 });
             }, 1000);
         };
-
-
-        //-------------send message------
         var SendAudio = new Audio("../assets/audio/send.mp3");
         $(".write-message").on("keydown", function (event) {
             if (event.keyCode === 13) { // Enter click
@@ -878,125 +1098,10 @@
                 }
             }
         });
-    </script>
-    <!--End Home Script-->
-    <!--The Notification Script-->
-    <script>
-        $(document).ready(function () {
-            var menu = '@ViewBag.ActiveMenu';
-            if (menu == "Notification") {
-                $.ajax({
-                    url: "/Notification/GetNotifications",
-                    type: "Get",
-                    dataType: "json",
-                    success: function (data) {
-                        var html = '';
-                        if (data != null) {
-                            $.each(data, function (i, val) {
-                                html += '<div class="notification-list notification-list--unread" style="height:90px;width:900px;margin-left:15px;"><div class="notification-list_content"><div class="notification-list_img"><img class="myimg11" onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '" alt="user"></div><div class="notification-list_detail"><p style="margin-top:15px; font-size:20px"><b>' + val.fromUser + '</b> sent you a friend request-  ->' + val.date + '</p></div></div><div class="notification-list_feature-img buttons"><button class="btn button-37" onclick="Accept(\'' + val.fromUser + '\',$(this))" role="button">Accept</button><button class="btn button-37-1" onclick="Reject(\'' + val.fromUser + '\',$(this))" role="button">Reject</button></div></div>';
-                            });
-                        }
-                        else {
-                            html += '<img src="../assets/images/nonotification.jpg" alt="user" style="width:300px;margin-left:300px;">';
-                        }
-                        $('#notification_box').empty();
-                        $('#notification_box').append(html);
-                    }
-                });
-            }
-        });
-
-        function Accept(name, el) {
-            el.prop('disabled', true);
-            $.ajax({
-                url: "/Follow/ToAcceptRequest",
-                type: "POST",
-                data: { username: name },
-                success: function () {
-                    el.closest('.notification-list').css('display', 'none');
-                }
-            });
-        }
-
-        function Reject(name, el) {
-            el.prop('disabled', true);
-            $.ajax({
-                url: "/Follow/ToRejectRequest",
-                type: "POST",
-                data: { username: name },
-                success: function () {
-                    el.closest('.notification-list').css('display', 'none');
-                }
-            });
-        }
 
 
-        //The Modal Script------ >
-        var modal = document.getElementById("myModal");
-        var modalImg = document.getElementById("img01");
-        var captionText = document.getElementById("caption");
-        function Modal(image) {
-            modal.style.display = "block";
-            modalImg.src = "../assets/images/" + image;
-        };
-        var span = document.getElementsByClassName("close")[0];
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-        //End Modal Script------ >
 
-        //The Media Modal Script-------------->
-        var modal = document.getElementById("myMediaModal");
-        var modalImg = document.getElementById("img");
-        var captionText = document.getElementById("caption1");
-        function MediaModal(image) {
-            modal.style.display = "block";
-            modalImg.src = "../assets/media/photos/" + image;
-        };
-        var span = document.getElementsByClassName("closeModal")[0];
-        span.onclick = function () {
-            modal.style.display = "none";
-        }
-        //End Media Modal Script-------------->
-
-
-    </script>
-    <!--End Notification Script-->
-    <!--The Follow Script-->
-    <script>
-        $(document).ready(function () {
-            $("#search").keyup(function () {
-                var username = $("#search").val();
-                $.ajax({
-                    url: "/Follow/SearchByUsername",
-                    type: "GET",
-                    data: { username: username },
-                    dataType: "json",
-                    success: function (data) {
-                        var html = "";
-                        if (data != null) {
-                            $.each(data, function (i, val) {
-                                if (val.requestStatus == "sendRequest") {
-                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button><button style="display:none;" class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button></div></div></div>';
-                                }
-                                else if (val.requestStatus == "requested") {
-                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-secondary" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button><button style="display:none;" class="btn btn-success"  onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button></div></div></div>';
-                                }
-                                else {//followed
-                                    html += '<div class="card"><div class="card-body"style="display:flex;justify-content: space-between;"><div style="display: flex; align-items: center;"><img onclick="Modal(\'' + val.image + '\')" src="../assets/images/' + val.image + '"alt="user"style="width:40px;height:40px;"/><p style="margin-left:20px;margin-top:5px;font-size:20px;font-weight:bold;">' + val.userName + '</p></div><div style="display: flex; align-items: center;"><button class="btn btn-danger" onclick="DeleteFollowUp(\'' + val.userName + '\',$(this))">Do not follow</button><button class="btn btn-success" style="display:none;" onclick="SendRequest(\'' + val.userName + '\',$(this))" >Send follow request</button><button class="btn btn-secondary" style="display:none;" onclick="WithdrawRequest(\'' + val.userName + '\',$(this))">Withdraw the request</button></div></div></div>';
-                                }
-                            });
-                        }
-                        else {
-                            console.log("1sq");
-                            html += '<div class="card"><div class="card-body"style="display:-webkit-box;display:-ms-flexbox;display:flex;"><p>Heç bir netice yoxdur</p>';
-                        }
-                        $('#search_box').empty();
-                        $('#search_box').append(html);
-                    }
-                });
-            });
-        });
+        //---------FOLLOW---------------------------
         function SendRequest(name, el) {
             el.prop('disabled', true);
             $.ajax({
@@ -1038,11 +1143,34 @@
         };
 
 
-    </script>
-    <!--End Follow Script-->
-    <!--The Profile Script-->
-    <script>
 
+        //--------NOTIFICATION----------------------
+        function Accept(name, el) {
+            el.prop('disabled', true);
+            $.ajax({
+                url: "/Follow/ToAcceptRequest",
+                type: "POST",
+                data: { username: name },
+                success: function () {
+                    el.closest('.notification-list').css('display', 'none');
+                }
+            });
+        }
+        function Reject(name, el) {
+            el.prop('disabled', true);
+            $.ajax({
+                url: "/Follow/ToRejectRequest",
+                type: "POST",
+                data: { username: name },
+                success: function () {
+                    el.closest('.notification-list').css('display', 'none');
+                }
+            });
+        }
+
+
+
+        //--------PROFIL-----------------------------
         $("#editProfil, #closeform").click(function () {
             $("#editform").toggle();
             $("#followList").css("display", "none");
@@ -1053,8 +1181,6 @@
         $("#closefollowlist").click(function () {
             $("#followList").css("display", "none");
         });
-
-
         $("#Followers").click(function () {
             $("#editform").css("display", "none");
             $("#followList").css("display", "block");
@@ -1093,162 +1219,65 @@
                 }
             });
         });
-    </script>
-    <!--End Profile Script-->
-    <!--The Media Script-->
-    <script>
-        $(document).ready(function () {
-            var menu = '@ViewBag.ActiveMenu';
-            console.log(menu);
-            if (menu == "Media") {
-                console.log("if");
-                var count = 0;
-                GetPost(count);
-            };
-            function GetPost(count) {
-                console.log("function");
-                $.ajax({
-                    url: "/Media/GetPosts",
-                    type: "GET",
-                    data: { count: count },
-                    dataType: "json",
-                    success: function (data) {
-                        console.log("count: " + count);
-                        console.log(data);
-                        var html = "";
-                        if (data != null) {
-                            $.each(data, function (i, val) {
-                                if (val.postType == "image") {
-                                    html += `<div class="card mb-3" style="width:95%;margin-left:25px;">
-                                                                                                                                                                                                                            <img class="card-img-top" onclick="MediaModal('`+ val.postName + `')" src="../assets/media/photos/` + val.postName + `" style="width:100%;max-height:650px;aspect-ratio:2/1;object-fit:contain" alt="Card image cap">
-                                                                                                                                                                                                            <div class="card-body">
-                                                                                                                                                                                                                        <img class="profil" src="../assets/images/`+ val.userPhoto + `" style="width:60px;border-radius:50%" />
-                                                                                                                                                                                                                        <h4 style="display:inline-block;" class="card-title">`+ val.userName + `</h4>
-                                                                                                                                                                                                                <p class="card-text" style="display:inline-block;">
-                                                                                                                                                                                                                                            <small class="text-muted">&nbsp;&nbsp;&nbsp;`+ val.date + `</small>
-                                                                                                                                                                                                                </p>
-                                                                                                                                                                                                                        <p class="card-text">`+ val.description + `</p>
-                                                                                                                                                                                                                        <div class="btn-group dropright" style="display:inline-block">
-                                                                                                                                                                                                                    <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                                                                                                                                                        <i class="fa-solid fa-paper-plane"></i>
-                                                                                                                                                                                                                    </button>
-                                                                                                                                                                                                                    <div class="dropdown-menu">
-                                                                                                                                                                                                                        <div style="background-color:rgb(224, 96, 182); width:250px; max-height:400px;overflow-y:scroll;overflow-x:hidden;">
-                                                                                                                                                                                                                            <div class="user-list-item">
-                                                                                                                                                                                                                                <span class="user-name">User 2</span>
-                                                                                                                                                                                                                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
-                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                            <div class="user-list-item">
-                                                                                                                                                                                                                                <span class="user-name">User adminnn 3</span>
-                                                                                                                                                                                                                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
-                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                            <div class="user-list-item">
-                                                                                                                                                                                                                                <span class="user-name">User 1123</span>
-                                                                                                                                                                                                                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
-                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                            <div class="user-list-item">
-                                                                                                                                                                                                                                <span class="user-name">User 2</span>
-                                                                                                                                                                                                                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
-                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                            <div class="user-list-item">
-                                                                                                                                                                                                                                <span class="user-name">User 2</span>
-                                                                                                                                                                                                                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
-                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                            <div class="user-list-item">
-                                                                                                                                                                                                                                <span class="user-name">User adminnn 3</span>
-                                                                                                                                                                                                                                <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
-                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                        <button type="button" class="dropdown-item active btn btn-primary">Send</button>
-                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                        <!--like dislike button-->
-                                                                                                                                                             <div style="display:inline-block">
-                                                                                                                                                                 <p class="like-count" style="display:inline-block">25</p>
-                                                                                                                                                                 <button type="button" class="btn btn-outline-primary like">
-                                                                                                                                                                     <i class="fa-regular fa-heart"></i>
-                                                                                                                                                                 </button>
-                                                                                                                                                                 <button type="button" class="btn btn-outline-primary dislike" style="display:none;">
-                                                                                                                                                                     <i class="fa-solid fa-heart fa-beat" style="color: #e23232;"></i>
-                                                                                                                                                                 </button>
-                                                                                                                                                             </div>
-                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                        </div>`;
-                                }
-                                else if (val.postType == "video") {
-                                    html += `<div class="card mb-3" style="width:95%;margin-left:25px;">
-                                                                                                                                               <video style="width:100%;max-height:650px;aspect-ratio:2/1;object-fit:contain" controls>
-                                                                                                                                                           <source src="/assets/media/videos/`+ val.postName + `" type="video/mp4">
-                                                                                                                                                   Your browser does not support the video tag.
-                                                                                                                                               </video>
-                                                                                                                                               <div class="card-body">
-                                                                                                                                                                   <img src="../assets/images/`+ val.userPhoto + `" style="width:60px;border-radius:50%" />
-                                                                                                                                                           <h4 style="display:inline-block;" class="card-title">`+ val.userName + `</h4>
-                                                                                                                                                   <p class="card-text" style="display:inline-block;">
-                                                                                                                                                                                       <small class="text-muted">&nbsp;&nbsp;&nbsp;`+ val.date + `</small>
-                                                                                                                                                   </p>
-                                                                                                                                                         <p class="card-text">`+ val.description + `</p>
-                                                                                                                                                 <div style="display:flex;justify-content:space-between">
-                                                                                                                                                     <!--Users list for send post-->
-                                                                                                                                                     <div class="btn-group dropright" style="display:inline-block">
-                                                                                                                                                         <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                                                                                                             <i class="fa-solid fa-paper-plane"></i>
-                                                                                                                                                         </button>
-                                                                                                                                                         <div class="dropdown-menu">
-                                                                                                                                                             <div style="background-color:rgb(224, 96, 182); width:250px; max-height:400px;overflow-y:scroll;overflow-x:hidden;">
-                                                                                                                                                                 <div class="user-list-item">
-                                                                                                                                                                     <span class="user-name">User 2</span>
-                                                                                                                                                                     <input type="checkbox" name="selectedUsers" value="user1" style="width:20px;height:20px;margin-right:10px;">
-                                                                                                                                                                 </div>
-                                                                                                                                                             </div>
-                                                                                                                                                             <button type="button" class="dropdown-item active btn btn-primary">Send</button>
-                                                                                                                                                         </div>
-                                                                                                                                                     </div>
-                                                                                                                                                     <!--like dislike button-->
-                                                                                                                                                     <div style="display:inline-block">
-                                                                                                                                                         <p class="like-count" style="display:inline-block">25</p>
-                                                                                                                                                         <button type="button" class="btn btn-outline-primary like">
-                                                                                                                                                             <i class="fa-regular fa-heart"></i>
-                                                                                                                                                         </button>
-                                                                                                                                                         <button type="button" class="btn btn-outline-primary dislike" style="display:none;">
-                                                                                                                                                             <i class="fa-solid fa-heart fa-beat" style="color: #e23232;"></i>
-                                                                                                                                                         </button>
-                                                                                                                                                     </div>
-                                                                                                                                                 </div>
-                                                                                                                                             </div>
-                                                                                                                                        </div>`;
-                                }
-                            });
-                        }
-                        //$("#posts").empty();
-                        $("#posts").append(html);
-                    }
-                });
-            }
-            var x = 0;
-            var take = 1;
-            var currentScroll = 0;
-            var p = 0;
-            $(".chatpost").scroll(function () {
-                currentScroll = $(this).scrollTop();
-                if (p <= currentScroll) {
-                    console.log("if p<=curr");
-                    x += 1;
-                    console.log("x = " + x);
-                    console.log("currentScroll: " + currentScroll);
-                    if (x == 55) {
-                        console.log("scroll if")
-                        GetPost(take)
-                        take += 1;
-                        x = 0;
-                        p = 0;
-                        currentScroll = 0;
-                    }
+
+
+
+        //---------MEDIA----------------------------
+        function dropDwn(el) {
+            console.log("button")
+            var card = el.closest(".card");
+            $.ajax({
+                url: "Media/GetSendUsers",
+                type: "GET",
+                dataType: "json",
+                success: function (data) {
+                    console.log("succes");
+                    var html = "";
+                    if (data != null) {
+                        var userlistDiv = card.find(".userlist");
+                        $.each(data, function (i, val) {
+                            html += `
+                                                                                <div class="user-list-item">
+                                                                                     <span class="user-name">`+ val.userName + `</span>
+                                                                                     <input type="checkbox" value="`+ val.userName + `" style="width:20px;height:20px;margin-right:10px;">
+                                                                                </div>`;
+                            userlistDiv.empty();
+                            userlistDiv.append(html);
+                        });
+                    };
                 }
-                p = currentScroll;
             });
-        });
+        };
+
+
+
+        //--------MODAL------------------------------
+        var modal = document.getElementById("myModal");
+        var modalImg = document.getElementById("img01");
+        var captionText = document.getElementById("caption");
+        function Modal(image) {
+            modal.style.display = "block";
+            modalImg.src = "../assets/images/" + image;
+        };
+        var span = document.getElementsByClassName("close")[0];
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+
+
+        //---------MediaModal-----------------------------
+        var modal = document.getElementById("myMediaModal");
+        var modalImg = document.getElementById("img");
+        var captionText = document.getElementById("caption1");
+        function MediaModal(image) {
+            modal.style.display = "block";
+            modalImg.src = "../assets/media/photos/" + image;
+        };
+        var span = document.getElementsByClassName("closeModal")[0];
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
     </script>
-    <!--End Media Script-->
 </body>
 </html>

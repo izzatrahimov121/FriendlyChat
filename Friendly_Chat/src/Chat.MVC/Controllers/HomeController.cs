@@ -119,7 +119,8 @@ public class HomeController : Controller
                 currentDate = CreatedAt;
             }
             results.Add(model);
-            message.IsRead = 1;
+            if (message.ToUserID == fromUser.UserName)
+                message.IsRead = 1;
             _messageRepository.Update(message);
             await _messageRepository.SaveAsync();
         }

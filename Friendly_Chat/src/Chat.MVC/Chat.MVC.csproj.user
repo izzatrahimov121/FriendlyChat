@@ -10,5 +10,6 @@
     <WebStackScaffolding_IsPartialViewSelected>True</WebStackScaffolding_IsPartialViewSelected>
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
     <NameOfLastUsedPublishProfile>C:\Users\izzet\OneDrive\Masaüstü\Friendly Chat\Friendly_Chat\src\Chat.MVC\Properties\PublishProfiles\FolderProfile.pubxml</NameOfLastUsedPublishProfile>
+    <WebStackScaffolding_DbContextTypeFullName>Chat.DataAccess.Contexts.AppDbContexts</WebStackScaffolding_DbContextTypeFullName>
   </PropertyGroup>
 </Project>

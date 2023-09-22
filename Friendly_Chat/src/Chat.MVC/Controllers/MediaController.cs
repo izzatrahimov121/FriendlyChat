@@ -32,12 +32,30 @@ public class MediaController : Controller
     public async Task<IActionResult> Index()
     {
         ViewBag.ActiveMenu = "Media";
+        var user = await _userManager.GetUserAsync(User);
+        if(user is null)
+        {
+            return RedirectToAction("Login", "Auth");
+        }
         return View();
     }
 
     public IActionResult Share()
     {
         return View();
+    }
+    
+    public IActionResult MyShared()
+    {
+        return View();
+    }
+
+    [HttpGet]
+    public async Task<JsonResult> MySharedPosts()
+    {
+        var user = await _userManager.GetUserAsync(User);
+        var posts = await _postRepository.FindAll().Where(p=>p.UserId == user.Id).ToListAsync();
+        return Json(posts.OrderBy(p => p.CreatedAt));
     }
 
     [HttpPost]
@@ -141,7 +159,6 @@ public class MediaController : Controller
         }
 
 
-
         var followers = await _friendshipRepository.FindAll().Where(f => f.FollowedID == loginUser.Id).ToListAsync();
         var followersNotInFriends = followers.Where(f => !friends.Any(fr => fr.UserID == f.UserID)).ToList();
         if (followersNotInFriends is not null)
@@ -200,5 +217,35 @@ public class MediaController : Controller
         var posts = await Posts();
         if (count == 0) { return Json(posts.Take(2).ToList()); }
         else { return Json(posts.Skip(count * 2).Take(2).ToList()); }
+    }
+
+    [HttpGet]
+    public async Task<JsonResult> GetSendUsers()
+    {
+        var loginUser = await _userManager.GetUserAsync(User);
+        List<GetSendUsersViewModel> results = new List<GetSendUsersViewModel>();
+
+        var friends = await _friendshipRepository.FindAll().Where(f => f.UserID == loginUser.Id).ToListAsync();
+        if (friends is not null)
+        {
+            foreach (var friend in friends)
+            {
+                GetSendUsersViewModel model = new GetSendUsersViewModel();
+                model.UserName = (await _userManager.FindByIdAsync(friend.FollowedID)).UserName;
+                results.Add(model);
+            }
+        }
+
+        var followers = await _friendshipRepository.FindAll().Where(f => f.FollowedID == loginUser.Id).ToListAsync();
+        if (followers is not null)
+        {
+            foreach (var friend in followers)
+            {
+                GetSendUsersViewModel model = new GetSendUsersViewModel();
+                model.UserName = (await _userManager.FindByIdAsync(friend.UserID)).UserName;
+                results.Add(model);
+            }
+        }
+        return Json(results.DistinctBy(r=>r.UserName).ToList());
     }
 }

@@ -11,5 +11,5 @@ public class Message : IEntity
     public DateTime? CreatedAt { get; set; } = DateTime.Now;
     public int IsRead { get; set; } = 0;
     //IsRead = 1 oxunub
-    //IsRead =0 oxunmuyub
+    //IsRead =0 oxunmayib
 }

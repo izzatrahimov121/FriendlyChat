@@ -730,10 +730,9 @@
 
 
 
-
             //---------------SignalR-----------------------------------
             const connection = new signalR.HubConnectionBuilder()
-                .withUrl("/onlineusershub")
+                .withUrl("/myhub")
                 .withAutomaticReconnect([1000,3000,5000,10000,30000])//var ola baglantı qoparsa avtomatic default olaraq 0-2-10-30 cu sanielerde 4defe yeniden baglanti qurur. parametirle saniyeleri daxil ederek sayı ve zamani artıra bilirik 
                 .build();
 

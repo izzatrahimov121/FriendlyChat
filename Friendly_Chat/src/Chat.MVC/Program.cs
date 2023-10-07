@@ -35,7 +35,7 @@ builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 	opt.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
 }).AddEntityFrameworkStores<AppDbContexts>()
   .AddEntityFrameworkStores<AppDbContexts>()
-  .AddDefaultTokenProviders();//for frogot passwod;
+  .AddDefaultTokenProviders();//for forget password;
 
 
 //add services and repository
@@ -75,7 +75,7 @@ app.MapControllerRoute(
 
 app.UseEndpoints(endpoints =>
 {
-	endpoints.MapHub<OnlineUsersHub>("/onlineusershub");
+	endpoints.MapHub<MyHub>("/myhub");
 });
 
 app.Run();
